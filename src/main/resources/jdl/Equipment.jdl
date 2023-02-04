@@ -1,0 +1,11 @@
+entity Equipment {
+	name String,
+	totalEle Integer,
+	rentedEle Integer,
+	currentEle Integer,
+}
+
+filter *
+dto * with mapstruct
+paginate * with pagination
+service * with serviceClass

@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20230204163649",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "equipment",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "totalEle",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rentedEle",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "currentEle",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Equipment",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}
