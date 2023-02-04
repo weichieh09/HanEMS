@@ -27,6 +27,13 @@ import AlertService from './shared/alert/alert.service';
 import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
+
+/* wccCode */
+// 導入全局 BootstrapVue
+import { BootstrapVue } from 'bootstrap-vue';
+Vue.use(BootstrapVue);
+/* wccCode */
+
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here

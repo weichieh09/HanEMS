@@ -7,7 +7,7 @@
 
     <groupId>com.wcc.hanems</groupId>
     <artifactId>han-ems</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>230204</version>
     <packaging>jar</packaging>
     <name>Han EMS</name>
     <description>Description for HanEMS</description>
@@ -90,6 +90,9 @@
         <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
 
         <!-- jhipster-needle-maven-property -->
+        <!-- wccCode -->
+        <org.projectlombok.version>1.18.20</org.projectlombok.version>
+        <!-- wccCode -->
     </properties>
 
     <dependencyManagement>
@@ -279,6 +282,14 @@
             <artifactId>metrics-core</artifactId>
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
+        <!-- wccCode -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- wccCode -->
     </dependencies>
 
     <build>
@@ -408,6 +419,13 @@
                                 <version>${jaxb-runtime.version}</version>
                             </path>
                             <!-- jhipster-needle-maven-add-annotation-processor -->
+                            <!-- wccCode -->
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${org.projectlombok.version}</version>
+                            </path>
+                            <!-- wccCode -->
                         </annotationProcessorPaths>
                     </configuration>
                 </plugin>

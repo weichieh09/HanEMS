@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "HanEMS",
+    "title": "設備管理系統",
     "browsehappy": "您的瀏覽器已經<strong>過時</strong>，建議您<a href=\"http://browsehappy.com/?locale=en\">升級瀏覽器</a>，以便有更好的體驗。",
     "menu": {
       "home": "首頁",
@@ -142,5 +142,5 @@
       "not.image": "檔案應該要是圖片格式，但實際卻是 \"{{ fileType }}\""
     }
   },
-  "footer": "這裡是您的頁尾"
+  "footer": "WcC © 2023"
 }

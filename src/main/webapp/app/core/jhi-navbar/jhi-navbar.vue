@@ -18,12 +18,12 @@
 
     <b-collapse is-nav id="header-tabs">
       <b-navbar-nav class="ml-auto">
-        <b-nav-item to="/" exact>
+        <!-- <b-nav-item to="/" exact>
           <span>
             <font-awesome-icon icon="home" />
             <span v-text="$t('global.menu.home')">Home</span>
           </span>
-        </b-nav-item>
+        </b-nav-item> -->
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />
