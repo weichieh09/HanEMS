@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('hanEmsApp.equipment.home.refreshListLabel')">Refresh List</span>
         </button>
-        <router-link :to="{ name: 'EquipmentCreate' }" custom v-slot="{ navigate }">
+        <!-- <router-link :to="{ name: 'EquipmentCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -17,7 +17,7 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="$t('hanEmsApp.equipment.home.createLabel')"> Create a new Equipment </span>
           </button>
-        </router-link>
+        </router-link> -->
       </div>
     </h2>
     <br />
@@ -68,7 +68,7 @@
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'EquipmentEdit', params: { equipmentId: equipment.id } }" custom v-slot="{ navigate }">
+                <!-- <router-link :to="{ name: 'EquipmentEdit', params: { equipmentId: equipment.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
@@ -83,7 +83,7 @@
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
-                </b-button>
+                </b-button> -->
               </div>
             </td>
           </tr>
