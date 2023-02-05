@@ -8,11 +8,11 @@ const ChangePassword = () => import('@/account/change-password/change-password.v
 const Settings = () => import('@/account/settings/settings.vue');
 
 export default [
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register,
-  },
+  // {
+  //   path: '/register',
+  //   name: 'Register',
+  //   component: Register,
+  // },
   {
     path: '/account/activate',
     name: 'Activate',

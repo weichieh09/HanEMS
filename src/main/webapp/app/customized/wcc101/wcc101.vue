@@ -4,11 +4,11 @@
       <br /><br /><br />
       <b-row>
         <b-col md="12">
-          <h1 align="center">2023/2/4 23:07</h1>
+          <h1 align="center">2023/2/4 21:07</h1>
           <br />
         </b-col>
         <b-col md="4">
-          <router-link :to="{ name: 'Wcc102' }" custom v-slot="{ navigate }">
+          <router-link :to="{ name: 'Wcc104' }" custom v-slot="{ navigate }">
             <div style="padding: 5px 0px; cursor: pointer" @click="navigate">
               <b-card border-variant="secondary" header=" " header-border-variant="secondary" align="center" title="總覽">
                 <b-card-text>Overview</b-card-text>

@@ -95,7 +95,8 @@
         >
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="user" />
-            <span class="no-bold" v-text="$t('global.menu.account.main')"> Account </span>
+            <!-- <span class="no-bold" v-text="$t('global.menu.account.main')"> Account </span> -->
+            <span class="no-bold"> 管理者 </span>
           </span>
           <b-dropdown-item data-cy="settings" to="/account/settings" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="wrench" />
@@ -113,7 +114,7 @@
             <font-awesome-icon icon="sign-in-alt" />
             <span v-text="$t('global.menu.account.login')">Sign in</span>
           </b-dropdown-item>
-          <b-dropdown-item
+          <!-- <b-dropdown-item
             data-cy="register"
             to="/register"
             tag="b-dropdown-item"
@@ -123,7 +124,7 @@
           >
             <font-awesome-icon icon="user-plus" />
             <span v-text="$t('global.menu.account.register')">Register</span>
-          </b-dropdown-item>
+          </b-dropdown-item> -->
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>

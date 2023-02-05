@@ -39,8 +39,8 @@
             <label class="form-control-label">用途</label>
             <input type="text" class="form-control" />
           </div>
-          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary btn-lg">送出</button>
-          <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info btn-lg">返回</button>
+          <button type="submit" :disabled="$v.$invalid" class="btn btn-primary">送出</button>
+          <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info">返回</button>
         </form>
       </div>
     </div>
