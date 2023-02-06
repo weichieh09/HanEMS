@@ -5,7 +5,7 @@ import EqItemService from './eq-item.service';
 import AlertService from '@/shared/alert/alert.service';
 
 @Component
-export default class EqItemDetails extends Vue {
+export default class Wcc105Details extends Vue {
   @Provide('eqItemService') private eqItemService = () => new EqItemService();
   @Inject('alertService') private alertService: () => AlertService;
 
