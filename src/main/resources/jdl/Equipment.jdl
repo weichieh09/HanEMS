@@ -1,8 +1,9 @@
 entity Equipment {
+	eqItemId Integer,
 	name String,
-	totalEle Integer,
-	rentedEle Integer,
-	currentEle Integer,
+	description String,
+	createDate Instant,
+	modifyDate Instant,
 }
 
 filter *
