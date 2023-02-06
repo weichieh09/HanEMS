@@ -63,13 +63,13 @@ export default [
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/wcc106/:eqItemId/edit',
+    path: '/wcc106/:eqViewId/edit',
     name: 'Wcc106Edit',
     component: Wcc106Update,
     meta: { authorities: [Authority.USER] },
   },
   {
-    path: '/wcc106/:eqItemId/view',
+    path: '/wcc106/:eqViewId/view',
     name: 'Wcc106View',
     component: Wcc106Details,
     meta: { authorities: [Authority.USER] },

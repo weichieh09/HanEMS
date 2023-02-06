@@ -64,33 +64,33 @@ export default class Wcc106 extends Vue {
     this.clear();
   }
 
-  // public prepareRemove(instance: IEqItem): void {
-  //   this.removeId = instance.id;
-  //   if (<any>this.$refs.removeEntity) {
-  //     (<any>this.$refs.removeEntity).show();
-  //   }
-  // }
+  public prepareRemove(instance: IEqView): void {
+    this.removeId = instance.id;
+    if (<any>this.$refs.removeEntity) {
+      (<any>this.$refs.removeEntity).show();
+    }
+  }
 
-  // public removeEqItem(): void {
-  //   this.eqItemService()
-  //     .delete(this.removeId)
-  //     .then(() => {
-  //       const message = this.$t('hanEmsApp.eqItem.deleted', { param: this.removeId });
-  //       this.$bvToast.toast(message.toString(), {
-  //         toaster: 'b-toaster-top-center',
-  //         title: 'Info',
-  //         variant: 'danger',
-  //         solid: true,
-  //         autoHideDelay: 5000,
-  //       });
-  //       this.removeId = null;
-  //       this.retrieveAllEqItems();
-  //       this.closeDialog();
-  //     })
-  //     .catch(error => {
-  //       this.alertService().showHttpError(this, error.response);
-  //     });
-  // }
+  public removeEqViews(): void {
+    // this.eqViewService()
+    //   .delete(this.removeId)
+    //   .then(() => {
+    //     const message = this.$t('hanEmsApp.eqItem.deleted', { param: this.removeId });
+    //     this.$bvToast.toast(message.toString(), {
+    //       toaster: 'b-toaster-top-center',
+    //       title: 'Info',
+    //       variant: 'danger',
+    //       solid: true,
+    //       autoHideDelay: 5000,
+    //     });
+    //     this.removeId = null;
+    //     this.retrieveAllEqItems();
+    //     this.closeDialog();
+    //   })
+    //   .catch(error => {
+    //     this.alertService().showHttpError(this, error.response);
+    //   });
+  }
 
   public sort(): Array<any> {
     const result = [this.propOrder + ',' + (this.reverse ? 'desc' : 'asc')];

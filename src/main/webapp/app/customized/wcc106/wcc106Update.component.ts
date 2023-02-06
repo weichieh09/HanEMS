@@ -5,11 +5,11 @@ import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 
 import AlertService from '@/shared/alert/alert.service';
 
-import { IEqItem, EqItem } from '@/shared/model/eq-item.model';
-import EqItemService from './eq-view.service';
+import { IEqView, EqView } from '@/shared/model/eq-view.model';
+import EqViewService from './eq-view.service';
 
 const validations: any = {
-  eqItem: {
+  eqView: {
     name: {},
     description: {},
     createDate: {},
@@ -21,17 +21,17 @@ const validations: any = {
   validations,
 })
 export default class Wcc106Update extends Vue {
-  @Provide('eqItemService') private eqItemService = () => new EqItemService();
+  @Provide('eqViewService') private eqViewService = () => new EqViewService();
   @Inject('alertService') private alertService: () => AlertService;
 
-  public eqItem: IEqItem = new EqItem();
+  public eqView: IEqView = new EqView();
   public isSaving = false;
   public currentLanguage = '';
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      if (to.params.eqItemId) {
-        vm.retrieveEqItem(to.params.eqItemId);
+      if (to.params.eqViewId) {
+        vm.retrieveEqView(to.params.eqViewId);
       }
     });
   }
@@ -48,13 +48,13 @@ export default class Wcc106Update extends Vue {
 
   public save(): void {
     this.isSaving = true;
-    if (this.eqItem.id) {
-      this.eqItemService()
-        .update(this.eqItem)
+    if (this.eqView.id) {
+      this.eqViewService()
+        .update(this.eqView)
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('hanEmsApp.eqItem.updated', { param: param.id });
+          const message = this.$t('hanEmsApp.eqView.updated', { param: param.id });
           return (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Info',
@@ -68,12 +68,12 @@ export default class Wcc106Update extends Vue {
           this.alertService().showHttpError(this, error.response);
         });
     } else {
-      this.eqItemService()
-        .create(this.eqItem)
+      this.eqViewService()
+        .create(this.eqView)
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('hanEmsApp.eqItem.created', { param: param.id });
+          const message = this.$t('hanEmsApp.eqView.created', { param: param.id });
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',
@@ -98,27 +98,27 @@ export default class Wcc106Update extends Vue {
 
   public updateInstantField(field, event) {
     if (event.target.value) {
-      this.eqItem[field] = dayjs(event.target.value, DATE_TIME_LONG_FORMAT);
+      this.eqView[field] = dayjs(event.target.value, DATE_TIME_LONG_FORMAT);
     } else {
-      this.eqItem[field] = null;
+      this.eqView[field] = null;
     }
   }
 
   public updateZonedDateTimeField(field, event) {
     if (event.target.value) {
-      this.eqItem[field] = dayjs(event.target.value, DATE_TIME_LONG_FORMAT);
+      this.eqView[field] = dayjs(event.target.value, DATE_TIME_LONG_FORMAT);
     } else {
-      this.eqItem[field] = null;
+      this.eqView[field] = null;
     }
   }
 
-  public retrieveEqItem(eqItemId): void {
-    this.eqItemService()
-      .find(eqItemId)
+  public retrieveEqView(eqViewId): void {
+    this.eqViewService()
+      .find(eqViewId)
       .then(res => {
         res.createDate = new Date(res.createDate);
         res.modifyDate = new Date(res.modifyDate);
-        this.eqItem = res;
+        this.eqView = res;
       })
       .catch(error => {
         this.alertService().showHttpError(this, error.response);
