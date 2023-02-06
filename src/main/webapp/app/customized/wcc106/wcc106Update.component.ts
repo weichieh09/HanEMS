@@ -7,13 +7,16 @@ import AlertService from '@/shared/alert/alert.service';
 
 import { IEqView, EqView } from '@/shared/model/eq-view.model';
 import EqViewService from './eq-view.service';
+import Wcc106Service from './wcc106.service';
+// import EquipmentService from './equipment.service';
 
 const validations: any = {
   eqView: {
-    name: {},
-    description: {},
-    createDate: {},
-    modifyDate: {},
+    eqItemId: {},
+    eqName: {},
+    eqDescription: {},
+    eqCreateDate: {},
+    eqModifyDate: {},
   },
 };
 
@@ -22,6 +25,8 @@ const validations: any = {
 })
 export default class Wcc106Update extends Vue {
   @Provide('eqViewService') private eqViewService = () => new EqViewService();
+  // @Provide('equipmentService') private equipmentService = () => new EquipmentService();
+  @Provide('wcc106Service') private wcc106Service = () => new Wcc106Service();
   @Inject('alertService') private alertService: () => AlertService;
 
   public eqView: IEqView = new EqView();
@@ -49,7 +54,7 @@ export default class Wcc106Update extends Vue {
   public save(): void {
     this.isSaving = true;
     if (this.eqView.id) {
-      this.eqViewService()
+      this.wcc106Service()
         .update(this.eqView)
         .then(param => {
           this.isSaving = false;
@@ -68,7 +73,7 @@ export default class Wcc106Update extends Vue {
           this.alertService().showHttpError(this, error.response);
         });
     } else {
-      this.eqViewService()
+      this.wcc106Service()
         .create(this.eqView)
         .then(param => {
           this.isSaving = false;

@@ -15,7 +15,15 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="eq-view-name">類別</label>
-            <input type="text" class="form-control" readonly />
+            <input
+              type="text"
+              class="form-control"
+              name="eqItemId"
+              id="eq-view-eqItemId"
+              data-cy="eqItemId"
+              :class="{ valid: !$v.eqView.eqItemId.$invalid, invalid: $v.eqView.eqItemId.$invalid }"
+              v-model="$v.eqView.eqItemId.$model"
+            />
           </div>
           <div class="form-group">
             <label class="form-control-label" for="eq-view-name">名稱</label>
@@ -25,8 +33,8 @@
               name="name"
               id="eq-view-name"
               data-cy="name"
-              :class="{ valid: !$v.eqView.name.$invalid, invalid: $v.eqView.name.$invalid }"
-              v-model="$v.eqView.name.$model"
+              :class="{ valid: !$v.eqView.eqName.$invalid, invalid: $v.eqView.eqName.$invalid }"
+              v-model="$v.eqView.eqName.$model"
             />
           </div>
           <div class="form-group">
@@ -37,8 +45,8 @@
               name="description"
               id="eq-view-description"
               data-cy="description"
-              :class="{ valid: !$v.eqView.description.$invalid, invalid: $v.eqView.description.$invalid }"
-              v-model="$v.eqView.description.$model"
+              :class="{ valid: !$v.eqView.eqDescription.$invalid, invalid: $v.eqView.eqDescription.$invalid }"
+              v-model="$v.eqView.eqDescription.$model"
             />
           </div>
         </div>
