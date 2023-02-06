@@ -7,7 +7,7 @@ public class UpdateEquipmentReq {
 
     private Long id;
 
-    private String eqItemId;
+    private Long eqItemId;
 
     private String eqName;
 

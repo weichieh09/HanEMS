@@ -7,7 +7,7 @@ public class CreateEquipmentReq {
 
     private Long id;
 
-    private String eqItemId;
+    private Long eqItemId;
 
     private String eqName;
 

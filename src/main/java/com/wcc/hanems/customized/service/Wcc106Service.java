@@ -17,7 +17,7 @@ public class Wcc106Service {
     public EquipmentDTO copyProperties(CreateEquipmentReq source) {
         EquipmentDTO target = new EquipmentDTO();
         target.setId(source.getId());
-        //        target.setEqItemId(source.getEqItemId());
+        target.setEqItemId(source.getEqItemId());
         target.setName(source.getEqName());
         target.setDescription(source.getEqDescription());
         target.setCreateDate(Instant.now());
@@ -28,7 +28,7 @@ public class Wcc106Service {
     public EquipmentDTO copyProperties(UpdateEquipmentReq source) {
         EquipmentDTO target = new EquipmentDTO();
         target.setId(source.getId());
-        //        target.setEqItemId(source.getEqItemId());
+        target.setEqItemId(source.getEqItemId());
         target.setName(source.getEqName());
         target.setDescription(source.getEqDescription());
         target.setCreateDate(Instant.now());
