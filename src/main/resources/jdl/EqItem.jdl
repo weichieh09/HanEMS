@@ -1,7 +1,8 @@
 entity EqItem {
 	name String,
 	description String,
-	createDate LocalDate,
+	createDate Instant,
+	modifyDate Instant,
 }
 
 filter *
