@@ -6,6 +6,7 @@ import AlertService from '@/shared/alert/alert.service';
 import Vue2Filters from 'vue2-filters';
 import { IEqView } from '@/shared/model/eq-view.model';
 import EqViewService from './eq-view.service';
+import EquipmentService from './equipment.service';
 /* wccCode */
 
 @Component({
@@ -13,6 +14,7 @@ import EqViewService from './eq-view.service';
 })
 export default class Wcc106 extends Vue {
   @Provide('eqViewService') private eqViewService = () => new EqViewService();
+  @Provide('equipmentService') private equipmentService = () => new EquipmentService();
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
@@ -72,24 +74,24 @@ export default class Wcc106 extends Vue {
   }
 
   public removeEqViews(): void {
-    // this.eqViewService()
-    //   .delete(this.removeId)
-    //   .then(() => {
-    //     const message = this.$t('hanEmsApp.eqItem.deleted', { param: this.removeId });
-    //     this.$bvToast.toast(message.toString(), {
-    //       toaster: 'b-toaster-top-center',
-    //       title: 'Info',
-    //       variant: 'danger',
-    //       solid: true,
-    //       autoHideDelay: 5000,
-    //     });
-    //     this.removeId = null;
-    //     this.retrieveAllEqItems();
-    //     this.closeDialog();
-    //   })
-    //   .catch(error => {
-    //     this.alertService().showHttpError(this, error.response);
-    //   });
+    this.equipmentService()
+      .delete(this.removeId)
+      .then(() => {
+        const message = this.$t('hanEmsApp.eqItem.deleted', { param: this.removeId });
+        this.$bvToast.toast(message.toString(), {
+          toaster: 'b-toaster-top-center',
+          title: 'Info',
+          variant: 'danger',
+          solid: true,
+          autoHideDelay: 5000,
+        });
+        this.removeId = null;
+        this.retrieveAllEqViews();
+        this.closeDialog();
+      })
+      .catch(error => {
+        this.alertService().showHttpError(this, error.response);
+      });
   }
 
   public sort(): Array<any> {
