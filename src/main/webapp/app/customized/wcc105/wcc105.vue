@@ -36,9 +36,8 @@
               <span>名稱</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('description')">
+            <th scope="row">
               <span>描述</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
             </th>
             <!-- <th scope="row" v-on:click="changeOrder('createDate')">
               <span>建立時間</span>
