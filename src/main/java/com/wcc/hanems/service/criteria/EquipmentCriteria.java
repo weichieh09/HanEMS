@@ -23,7 +23,7 @@ public class EquipmentCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
-    private IntegerFilter eqItemId;
+    private LongFilter eqItemId;
 
     private StringFilter name;
 
@@ -67,18 +67,18 @@ public class EquipmentCriteria implements Serializable, Criteria {
         this.id = id;
     }
 
-    public IntegerFilter getEqItemId() {
+    public LongFilter getEqItemId() {
         return eqItemId;
     }
 
-    public IntegerFilter eqItemId() {
+    public LongFilter eqItemId() {
         if (eqItemId == null) {
-            eqItemId = new IntegerFilter();
+            eqItemId = new LongFilter();
         }
         return eqItemId;
     }
 
-    public void setEqItemId(IntegerFilter eqItemId) {
+    public void setEqItemId(LongFilter eqItemId) {
         this.eqItemId = eqItemId;
     }
 

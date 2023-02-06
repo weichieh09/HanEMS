@@ -12,7 +12,7 @@ public class EquipmentDTO implements Serializable {
 
     private Long id;
 
-    private Integer eqItemId;
+    private Long eqItemId;
 
     private String name;
 
@@ -30,11 +30,11 @@ public class EquipmentDTO implements Serializable {
         this.id = id;
     }
 
-    public Integer getEqItemId() {
+    public Long getEqItemId() {
         return eqItemId;
     }
 
-    public void setEqItemId(Integer eqItemId) {
+    public void setEqItemId(Long eqItemId) {
         this.eqItemId = eqItemId;
     }
 

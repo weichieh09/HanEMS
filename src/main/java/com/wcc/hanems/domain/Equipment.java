@@ -20,7 +20,7 @@ public class Equipment implements Serializable {
     private Long id;
 
     @Column(name = "eq_item_id")
-    private Integer eqItemId;
+    private Long eqItemId;
 
     @Column(name = "name")
     private String name;
@@ -49,16 +49,16 @@ public class Equipment implements Serializable {
         this.id = id;
     }
 
-    public Integer getEqItemId() {
+    public Long getEqItemId() {
         return this.eqItemId;
     }
 
-    public Equipment eqItemId(Integer eqItemId) {
+    public Equipment eqItemId(Long eqItemId) {
         this.setEqItemId(eqItemId);
         return this;
     }
 
-    public void setEqItemId(Integer eqItemId) {
+    public void setEqItemId(Long eqItemId) {
         this.eqItemId = eqItemId;
     }
 

@@ -7,7 +7,7 @@
   "fields": [
     {
       "fieldName": "eqItemId",
-      "fieldType": "Integer"
+      "fieldType": "Long"
     },
     {
       "fieldName": "name",
