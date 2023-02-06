@@ -57,7 +57,7 @@
             <font-awesome-icon icon="heart" />
             <span v-text="$t('global.menu.admin.health')">Health</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/admin/configuration" active-class="active">
+          <!-- <b-dropdown-item to="/admin/configuration" active-class="active">
             <font-awesome-icon icon="cogs" />
             <span v-text="$t('global.menu.admin.configuration')">Configuration</span>
           </b-dropdown-item>
@@ -68,7 +68,7 @@
           <b-dropdown-item v-if="openAPIEnabled" to="/admin/docs" active-class="active">
             <font-awesome-icon icon="book" />
             <span v-text="$t('global.menu.admin.apidocs')">API</span>
-          </b-dropdown-item>
+          </b-dropdown-item> -->
         </b-nav-item-dropdown>
         <b-nav-item-dropdown id="languagesnavBarDropdown" right v-if="languages && Object.keys(languages).length > 1">
           <span slot="button-content">

@@ -34,34 +34,34 @@ export default [
     component: JhiUserManagementViewComponent,
     meta: { authorities: [Authority.ADMIN] },
   },
-  {
-    path: '/admin/docs',
-    name: 'JhiDocsComponent',
-    component: JhiDocsComponent,
-    meta: { authorities: [Authority.ADMIN] },
-  },
+  // {
+  //   path: '/admin/docs',
+  //   name: 'JhiDocsComponent',
+  //   component: JhiDocsComponent,
+  //   meta: { authorities: [Authority.ADMIN] },
+  // },
   {
     path: '/admin/health',
     name: 'JhiHealthComponent',
     component: JhiHealthComponent,
     meta: { authorities: [Authority.ADMIN] },
   },
-  {
-    path: '/admin/logs',
-    name: 'JhiLogsComponent',
-    component: JhiLogsComponent,
-    meta: { authorities: [Authority.ADMIN] },
-  },
+  // {
+  //   path: '/admin/logs',
+  //   name: 'JhiLogsComponent',
+  //   component: JhiLogsComponent,
+  //   meta: { authorities: [Authority.ADMIN] },
+  // },
   {
     path: '/admin/metrics',
     name: 'JhiMetricsComponent',
     component: JhiMetricsComponent,
     meta: { authorities: [Authority.ADMIN] },
   },
-  {
-    path: '/admin/configuration',
-    name: 'JhiConfigurationComponent',
-    component: JhiConfigurationComponent,
-    meta: { authorities: [Authority.ADMIN] },
-  },
+  // {
+  //   path: '/admin/configuration',
+  //   name: 'JhiConfigurationComponent',
+  //   component: JhiConfigurationComponent,
+  //   meta: { authorities: [Authority.ADMIN] },
+  // },
 ];
