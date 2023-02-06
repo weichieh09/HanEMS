@@ -1,0 +1,14 @@
+@readOnly
+entity EqView {
+	eqItemId Integer,
+	eqItemName String,
+	eqName String,
+	eqDescription String,
+	eqCreateDate Instant,
+	eqModifyDate Instant,
+}
+
+filter *
+dto * with mapstruct
+paginate * with pagination
+service * with serviceClass

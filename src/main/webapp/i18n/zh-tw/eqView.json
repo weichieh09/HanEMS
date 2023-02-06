@@ -1,0 +1,21 @@
+{
+  "hanEmsApp": {
+    "eqView": {
+      "home": {
+        "title": "Eq Views",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Eq Views found"
+      },
+      "detail": {
+        "title": "Eq View"
+      },
+      "id": "ID",
+      "eqItemId": "Eq Item Id",
+      "eqItemName": "Eq Item Name",
+      "eqName": "Eq Name",
+      "eqDescription": "Eq Description",
+      "eqCreateDate": "Eq Create Date",
+      "eqModifyDate": "Eq Modify Date"
+    }
+  }
+}

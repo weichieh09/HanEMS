@@ -8,6 +8,10 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.equipment')">Equipment</span>
     </b-dropdown-item>
+    <b-dropdown-item to="/eq-view">
+      <font-awesome-icon icon="asterisk" />
+      <span v-text="$t('global.menu.entities.eqView')">Eq View</span>
+    </b-dropdown-item>
     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
   </div>
 </template>

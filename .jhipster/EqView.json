@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20230206133845",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "eq_view",
+  "fields": [
+    {
+      "fieldName": "eqItemId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "eqItemName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eqName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eqDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eqCreateDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "eqModifyDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "EqView",
+  "pagination": "pagination",
+  "readOnly": true,
+  "relationships": [],
+  "service": "serviceClass"
+}

@@ -42,7 +42,7 @@
             <font-awesome-icon icon="asterisk" />
             <span>類別管理</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/">
+          <b-dropdown-item to="/wcc106">
             <font-awesome-icon icon="asterisk" />
             <span>設備管理</span>
           </b-dropdown-item>

@@ -15,6 +15,10 @@ const Equipment = () => import('@/entities/equipment/equipment.vue');
 const EquipmentUpdate = () => import('@/entities/equipment/equipment-update.vue');
 // prettier-ignore
 const EquipmentDetails = () => import('@/entities/equipment/equipment-details.vue');
+// prettier-ignore
+const EqView = () => import('@/entities/eq-view/eq-view.vue');
+// prettier-ignore
+const EqViewDetails = () => import('@/entities/eq-view/eq-view-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -67,6 +71,18 @@ export default {
       path: 'equipment/:equipmentId/view',
       name: 'EquipmentView',
       component: EquipmentDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/eq-view',
+      name: 'EqView',
+      component: EqView,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/eq-view/:eqViewId/view',
+      name: 'EqViewView',
+      component: EqViewDetails,
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

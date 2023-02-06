@@ -6,6 +6,9 @@ const Wcc104Component = () => import('@/customized/wcc104/wcc104.vue');
 const Wcc105Component = () => import('@/customized/wcc105/wcc105.vue');
 const Wcc105Update = () => import('@/customized/wcc105/wcc105Update.vue');
 const Wcc105Details = () => import('@/customized/wcc105/wcc105Details.vue');
+const Wcc106Component = () => import('@/customized/wcc106/wcc106.vue');
+const Wcc106Update = () => import('@/customized/wcc106/wcc106Update.vue');
+const Wcc106Details = () => import('@/customized/wcc106/wcc106Details.vue');
 
 export default [
   {
@@ -45,6 +48,30 @@ export default [
     path: '/wcc105/:eqItemId/view',
     name: 'Wcc105View',
     component: Wcc105Details,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc106',
+    name: 'Wcc106',
+    component: Wcc106Component,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc106/new',
+    name: 'Wcc106Create',
+    component: Wcc106Update,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc106/:eqItemId/edit',
+    name: 'Wcc106Edit',
+    component: Wcc106Update,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc106/:eqItemId/view',
+    name: 'Wcc106View',
+    component: Wcc106Details,
     meta: { authorities: [Authority.USER] },
   },
 ];

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20230206133845-1" author="wcc">
+        <createView
+            replaceIfExists="true"
+            viewName="eq_view">
+            SELECT T1.id AS id,
+            T1.eq_item_id AS eq_item_id,
+            T2.name AS eq_item_name,
+            T1.name AS eq_name,
+            T1.description AS eq_description,
+            T1.create_date AS eq_create_date,
+            T1.modify_date AS eq_modify_date
+            FROM equipment AS T1
+            LEFT JOIN eq_item AS T2
+            ON T1.eq_item_id = T2.id
+        </createView>
+    </changeSet>
+</databaseChangeLog>
