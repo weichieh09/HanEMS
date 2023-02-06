@@ -2,30 +2,34 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <div v-if="eqItem">
-        <h2 class="jh-entity-heading" data-cy="eqItemDetailsHeading">
-          <span v-text="$t('hanEmsApp.eqItem.detail.title')">EqItem</span> {{ eqItem.id }}
-        </h2>
+        <h2 class="jh-entity-heading" data-cy="eqItemDetailsHeading">[檢視] 類別</h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('hanEmsApp.eqItem.name')">Name</span>
+            <span>編號</span>
+          </dt>
+          <dd>
+            <span>{{ eqItem.id }}</span>
+          </dd>
+          <dt>
+            <span>名稱</span>
           </dt>
           <dd>
             <span>{{ eqItem.name }}</span>
           </dd>
           <dt>
-            <span v-text="$t('hanEmsApp.eqItem.description')">Description</span>
+            <span>描述</span>
           </dt>
           <dd>
             <span>{{ eqItem.description }}</span>
           </dd>
           <dt>
-            <span v-text="$t('hanEmsApp.eqItem.createDate')">Create Date</span>
+            <span>建立時間</span>
           </dt>
           <dd>
             <span v-if="eqItem.createDate">{{ $d(Date.parse(eqItem.createDate), 'long') }}</span>
           </dd>
           <dt>
-            <span v-text="$t('hanEmsApp.eqItem.modifyDate')">Modify Date</span>
+            <span>更新時間</span>
           </dt>
           <dd>
             <span v-if="eqItem.modifyDate">{{ $d(Date.parse(eqItem.modifyDate), 'long') }}</span>

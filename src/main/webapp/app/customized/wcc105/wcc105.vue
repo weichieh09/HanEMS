@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="EqItemHeading">
-      <span>類別</span>
+      <span>類別管理</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
@@ -40,14 +40,14 @@
               <span>描述</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('createDate')">
+            <!-- <th scope="row" v-on:click="changeOrder('createDate')">
               <span>建立時間</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('modifyDate')">
               <span>更新時間</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'modifyDate'"></jhi-sort-indicator>
-            </th>
+            </th> -->
             <th scope="row"></th>
           </tr>
         </thead>
@@ -56,8 +56,8 @@
             <td>{{ eqItem.id }}</td>
             <td>{{ eqItem.name }}</td>
             <td>{{ eqItem.description }}</td>
-            <td>{{ eqItem.createDate ? $d(Date.parse(eqItem.createDate), 'short') : '' }}</td>
-            <td>{{ eqItem.modifyDate ? $d(Date.parse(eqItem.modifyDate), 'short') : '' }}</td>
+            <!-- <td>{{ eqItem.createDate ? $d(Date.parse(eqItem.createDate), 'short') : '' }}</td>
+            <td>{{ eqItem.modifyDate ? $d(Date.parse(eqItem.modifyDate), 'short') : '' }}</td> -->
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'Wcc105View', params: { eqItemId: eqItem.id } }" custom v-slot="{ navigate }">

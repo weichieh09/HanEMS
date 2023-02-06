@@ -3,10 +3,10 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <div v-if="eqItem.id">
-          <h2 id="hanEmsApp.eqItem.home.createOrEditLabel" data-cy="EqItemCreateUpdateHeading">編輯 類別</h2>
+          <h2 id="hanEmsApp.eqItem.home.createOrEditLabel" data-cy="EqItemCreateUpdateHeading">[編輯] 類別</h2>
         </div>
         <div v-else>
-          <h2 id="hanEmsApp.eqItem.home.createOrEditLabel" data-cy="EqItemCreateUpdateHeading">新增 類別</h2>
+          <h2 id="hanEmsApp.eqItem.home.createOrEditLabel" data-cy="EqItemCreateUpdateHeading">[新增] 類別</h2>
         </div>
         <div>
           <div class="form-group" v-if="eqItem.id">
@@ -37,7 +37,7 @@
               v-model="$v.eqItem.description.$model"
             />
           </div>
-          <div v-if="eqItem.id" class="form-group">
+          <!-- <div v-if="eqItem.id" class="form-group">
             <label class="form-control-label" for="eq-item-createDate">建立時間</label>
             <div class="d-flex">
               <input
@@ -66,7 +66,7 @@
                 @change="updateInstantField('modifyDate', $event)"
               />
             </div>
-          </div>
+          </div> -->
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
