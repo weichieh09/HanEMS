@@ -38,7 +38,7 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold">功能</span>
           </span>
-          <b-dropdown-item to="/">
+          <b-dropdown-item to="/wcc105">
             <font-awesome-icon icon="asterisk" />
             <span>類別管理</span>
           </b-dropdown-item>
