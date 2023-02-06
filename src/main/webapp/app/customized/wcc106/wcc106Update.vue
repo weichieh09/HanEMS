@@ -15,7 +15,8 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="eq-view-name">類別</label>
-            <input
+            <b-form-select v-model="$v.eqView.eqItemId.$model" :options="options"></b-form-select>
+            <!-- <input
               type="text"
               class="form-control"
               name="eqItemId"
@@ -23,7 +24,7 @@
               data-cy="eqItemId"
               :class="{ valid: !$v.eqView.eqItemId.$invalid, invalid: $v.eqView.eqItemId.$invalid }"
               v-model="$v.eqView.eqItemId.$model"
-            />
+            /> -->
           </div>
           <div class="form-group">
             <label class="form-control-label" for="eq-view-name">名稱</label>

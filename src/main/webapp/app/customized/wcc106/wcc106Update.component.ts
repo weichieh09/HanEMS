@@ -6,9 +6,10 @@ import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 import AlertService from '@/shared/alert/alert.service';
 
 import { IEqView, EqView } from '@/shared/model/eq-view.model';
+import { IEqItem } from '@/shared/model/eq-item.model';
 import EqViewService from './eq-view.service';
+import EqItemService from './eq-item.service';
 import Wcc106Service from './wcc106.service';
-// import EquipmentService from './equipment.service';
 
 const validations: any = {
   eqView: {
@@ -25,13 +26,14 @@ const validations: any = {
 })
 export default class Wcc106Update extends Vue {
   @Provide('eqViewService') private eqViewService = () => new EqViewService();
-  // @Provide('equipmentService') private equipmentService = () => new EquipmentService();
   @Provide('wcc106Service') private wcc106Service = () => new Wcc106Service();
   @Inject('alertService') private alertService: () => AlertService;
 
   public eqView: IEqView = new EqView();
   public isSaving = false;
   public currentLanguage = '';
+  private options = null;
+  public eqItems: IEqItem[] = [];
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -49,6 +51,20 @@ export default class Wcc106Update extends Vue {
         this.currentLanguage = this.$store.getters.currentLanguage;
       }
     );
+    this.getEqItemList();
+  }
+
+  public getEqItemList(): void {
+    this.wcc106Service()
+      .getEqItemList()
+      .then(
+        res => {
+          this.options = res.data;
+        },
+        err => {
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
   }
 
   public save(): void {
