@@ -33,12 +33,20 @@
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
         <!-- wccCode -->
-        <b-nav-item to="/" v-if="authenticated" active-class="active" class="pointer">
-          <span>
+        <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
+          <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />
-            <span>設備</span>
+            <span class="no-bold">功能</span>
           </span>
-        </b-nav-item>
+          <b-dropdown-item to="/">
+            <font-awesome-icon icon="asterisk" />
+            <span>類別管理</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/">
+            <font-awesome-icon icon="asterisk" />
+            <span>設備管理</span>
+          </b-dropdown-item>
+        </b-nav-item-dropdown>
         <!-- wccCode -->
         <b-nav-item-dropdown
           right
