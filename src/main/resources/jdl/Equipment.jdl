@@ -1,5 +1,5 @@
 entity Equipment {
-	eqItemId Integer,
+	eqItemId Long,
 	name String,
 	description String,
 	createDate Instant,
