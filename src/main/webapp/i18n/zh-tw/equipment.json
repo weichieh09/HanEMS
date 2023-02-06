@@ -2,9 +2,9 @@
   "hanEmsApp": {
     "equipment": {
       "home": {
-        "title": "設備",
-        "refreshListLabel": "更新",
-        "createLabel": "新增",
+        "title": "Equipment",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "建立一筆新的 Equipment",
         "createOrEditLabel": "建立或編輯 Equipment",
         "notFound": "No Equipment found"
       },
@@ -18,10 +18,11 @@
         "title": "Equipment"
       },
       "id": "ID",
-      "name": "設備名稱",
-      "totalEle": "總數量",
-      "rentedEle": "已借用數量",
-      "currentEle": "剩餘數量"
+      "eqItemId": "Eq Item Id",
+      "name": "Name",
+      "description": "Description",
+      "createDate": "Create Date",
+      "modifyDate": "Modify Date"
     }
   }
 }
