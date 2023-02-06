@@ -3,6 +3,7 @@ import { Authority } from '@/shared/security/authority';
 const Wcc102Component = () => import('@/customized/wcc102/wcc102.vue');
 const Wcc103Component = () => import('@/customized/wcc103/wcc103.vue');
 const Wcc104Component = () => import('@/customized/wcc104/wcc104.vue');
+const Wcc105Component = () => import('@/customized/wcc105/wcc105.vue');
 
 export default [
   {
@@ -19,5 +20,10 @@ export default [
     path: '/wcc104',
     name: 'Wcc104',
     component: Wcc104Component,
+  },
+  {
+    path: '/wcc105',
+    name: 'Wcc105',
+    component: Wcc105Component,
   },
 ];

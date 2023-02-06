@@ -32,6 +32,14 @@
           <entities-menu></entities-menu>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
+        <!-- wccCode -->
+        <b-nav-item to="/" v-if="authenticated" active-class="active" class="pointer">
+          <span>
+            <font-awesome-icon icon="th-list" />
+            <span>設備</span>
+          </span>
+        </b-nav-item>
+        <!-- wccCode -->
         <b-nav-item-dropdown
           right
           id="admin-menu"
@@ -49,10 +57,10 @@
             <font-awesome-icon icon="users" />
             <span v-text="$t('global.menu.admin.userManagement')">User management</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/admin/metrics" active-class="active">
+          <!-- <b-dropdown-item to="/admin/metrics" active-class="active">
             <font-awesome-icon icon="tachometer-alt" />
             <span v-text="$t('global.menu.admin.metrics')">Metrics</span>
-          </b-dropdown-item>
+          </b-dropdown-item> -->
           <b-dropdown-item to="/admin/health" active-class="active">
             <font-awesome-icon icon="heart" />
             <span v-text="$t('global.menu.admin.health')">Health</span>
