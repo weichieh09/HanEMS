@@ -20,7 +20,7 @@ const validations: any = {
 @Component({
   validations,
 })
-export default class EqItemUpdate extends Vue {
+export default class Wcc105Update extends Vue {
   @Provide('eqItemService') private eqItemService = () => new EqItemService();
   @Inject('alertService') private alertService: () => AlertService;
 
