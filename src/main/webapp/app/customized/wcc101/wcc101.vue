@@ -8,13 +8,19 @@
           <br />
         </b-col>
         <b-col md="4">
-          <router-link :to="{ name: 'Wcc104' }" custom v-slot="{ navigate }">
+          <!-- 暫時關閉 -->
+          <!-- <router-link :to="{ name: 'Wcc104' }" custom v-slot="{ navigate }">
             <div style="padding: 5px 0px; cursor: pointer" @click="navigate">
               <b-card border-variant="secondary" header=" " header-border-variant="secondary" align="center" title="總覽">
                 <b-card-text>Overview</b-card-text>
               </b-card>
             </div>
-          </router-link>
+          </router-link> -->
+          <div style="padding: 5px 0px">
+            <b-card border-variant="secondary" header=" " header-border-variant="secondary" align="center" title="總覽">
+              <b-card-text>Overview</b-card-text>
+            </b-card>
+          </div>
         </b-col>
         <b-col md="4">
           <router-link :to="{ name: 'Wcc102' }" custom v-slot="{ navigate }">
