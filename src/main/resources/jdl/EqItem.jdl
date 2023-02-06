@@ -1,0 +1,10 @@
+entity EqItem {
+	name String,
+	description String,
+	createDate LocalDate,
+}
+
+filter *
+dto * with mapstruct
+paginate * with pagination
+service * with serviceClass
