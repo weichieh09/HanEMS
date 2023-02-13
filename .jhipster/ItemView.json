@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20230213070737",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "item_view",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ready",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "working",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "canNot",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ItemView",
+  "pagination": "pagination",
+  "readOnly": true,
+  "relationships": [],
+  "service": "serviceClass"
+}

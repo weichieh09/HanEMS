@@ -1,0 +1,20 @@
+{
+  "hanEmsApp": {
+    "itemView": {
+      "home": {
+        "title": "Item Views",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Item Views found"
+      },
+      "detail": {
+        "title": "Item View"
+      },
+      "id": "Id",
+      "name": "Name",
+      "total": "Total",
+      "ready": "Ready",
+      "working": "Working",
+      "canNot": "Can Not"
+    }
+  }
+}

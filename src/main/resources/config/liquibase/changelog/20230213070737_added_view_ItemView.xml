@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity ViewPersonCar.
+    -->
+    <changeSet id="20230213070737-1" author="wcc">
+        <createView
+            replaceIfExists="true"
+            viewName="item_view">
+            SELECT A.id as id,
+            B.name as name,
+            A.total as total,
+            A.ready as ready,
+            A.working as working,
+            A.can_not as can_not
+            FROM(
+            SELECT item_id as id,
+            count(*) as 'total',
+            sum(case when status_id = '1' then 1 else 0 end) as 'ready',
+            sum(case when status_id = '2' then 1 else 0 end) as 'working',
+            sum(case when status_id = '3' then 1 else 0 end) as 'can_not'
+            FROM equipment
+            GROUP BY item_id
+            ) as A
+            JOIN item as B
+            ON A.id = B.id;
+        </createView>
+    </changeSet>
+</databaseChangeLog>

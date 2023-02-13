@@ -45,6 +45,10 @@ const BlackList = () => import('@/entities/black-list/black-list.vue');
 const BlackListUpdate = () => import('@/entities/black-list/black-list-update.vue');
 // prettier-ignore
 const BlackListDetails = () => import('@/entities/black-list/black-list-details.vue');
+// prettier-ignore
+const ItemView = () => import('@/entities/item-view/item-view.vue');
+// prettier-ignore
+const ItemViewDetails = () => import('@/entities/item-view/item-view-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -217,6 +221,42 @@ export default {
       path: 'black-list/:blackListId/view',
       name: 'BlackListView',
       component: BlackListDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view',
+      name: 'ItemView',
+      component: ItemView,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view/:itemViewId/view',
+      name: 'ItemViewView',
+      component: ItemViewDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view',
+      name: 'ItemView',
+      component: ItemView,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view/:itemViewId/view',
+      name: 'ItemViewView',
+      component: ItemViewDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view',
+      name: 'ItemView',
+      component: ItemView,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view/:itemViewId/view',
+      name: 'ItemViewView',
+      component: ItemViewDetails,
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

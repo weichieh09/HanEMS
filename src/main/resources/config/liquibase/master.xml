@@ -18,6 +18,8 @@
     <include file="config/liquibase/changelog/20230213023151_added_entity_Reason.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230213023152_added_entity_LendReturnRecord.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230213023153_added_entity_BlackList.xml" relativeToChangelogFile="false"/>
+<!--    <include file="config/liquibase/changelog/20230213070737_added_entity_ItemView.xml" relativeToChangelogFile="false"/>-->
+    <include file="config/liquibase/changelog/20230213070737_added_view_ItemView.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20230213023147_added_entity_constraints_Equipment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230213023152_added_entity_constraints_LendReturnRecord.xml" relativeToChangelogFile="false"/>

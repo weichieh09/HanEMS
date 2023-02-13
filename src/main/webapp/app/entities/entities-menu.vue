@@ -28,6 +28,10 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.blackList')">Black List</span>
     </b-dropdown-item>
+    <b-dropdown-item to="/item-view">
+      <font-awesome-icon icon="asterisk" />
+      <span v-text="$t('global.menu.entities.itemView')">Item View</span>
+    </b-dropdown-item>
     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
   </div>
 </template>
