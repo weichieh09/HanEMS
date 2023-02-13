@@ -1,0 +1,14 @@
+@readOnly
+entity ItemView {
+	id Long,
+	name String,
+	total String,
+	ready String,
+	working String,
+	canNot String,
+}
+
+filter *
+dto * with mapstruct
+paginate * with pagination
+service * with serviceClass
