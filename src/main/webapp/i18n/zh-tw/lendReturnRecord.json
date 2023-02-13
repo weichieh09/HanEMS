@@ -1,0 +1,31 @@
+{
+  "hanEmsApp": {
+    "lendReturnRecord": {
+      "home": {
+        "title": "Lend Return Records",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "建立一筆新的 Lend Return Record",
+        "createOrEditLabel": "建立或編輯 Lend Return Record",
+        "notFound": "No Lend Return Records found"
+      },
+      "created": "新的 Lend Return Record 建立成功，識別碼為 {{ param }}",
+      "updated": "識別碼為 {{ param }} 的 Lend Return Record 更新成功",
+      "deleted": "識別碼為 {{ param }} 的 Lend Return Record 刪除成功",
+      "delete": {
+        "question": "您確定要刪除 Lend Return Record {{ id }} 嗎?"
+      },
+      "detail": {
+        "title": "Lend Return Record"
+      },
+      "id": "ID",
+      "lendDate": "Lend Date",
+      "returnDate": "Return Date",
+      "description": "Description",
+      "createDate": "Create Date",
+      "modifyDate": "Modify Date",
+      "equipment": "Equipment",
+      "person": "Person",
+      "reason": "Reason"
+    }
+  }
+}

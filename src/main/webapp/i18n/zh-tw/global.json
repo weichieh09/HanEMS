@@ -7,6 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "實體",
+        "equipment": "Equipment",
+        "status": "Status",
+        "item": "Item",
+        "person": "Person",
+        "reason": "Reason",
+        "lendReturnRecord": "Lend Return Record",
+        "blackList": "Black List",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

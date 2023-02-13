@@ -1,0 +1,28 @@
+{
+  "hanEmsApp": {
+    "blackList": {
+      "home": {
+        "title": "Black Lists",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "建立一筆新的 Black List",
+        "createOrEditLabel": "建立或編輯 Black List",
+        "notFound": "No Black Lists found"
+      },
+      "created": "新的 Black List 建立成功，識別碼為 {{ param }}",
+      "updated": "識別碼為 {{ param }} 的 Black List 更新成功",
+      "deleted": "識別碼為 {{ param }} 的 Black List 刪除成功",
+      "delete": {
+        "question": "您確定要刪除 Black List {{ id }} 嗎?"
+      },
+      "detail": {
+        "title": "Black List"
+      },
+      "id": "ID",
+      "description": "Description",
+      "blackDate": "Black Date",
+      "createDate": "Create Date",
+      "modifyDate": "Modify Date",
+      "person": "Person"
+    }
+  }
+}

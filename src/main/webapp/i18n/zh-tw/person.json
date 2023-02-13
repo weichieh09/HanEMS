@@ -1,0 +1,28 @@
+{
+  "hanEmsApp": {
+    "person": {
+      "home": {
+        "title": "People",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "建立一筆新的 Person",
+        "createOrEditLabel": "建立或編輯 Person",
+        "notFound": "No People found"
+      },
+      "created": "新的 Person 建立成功，識別碼為 {{ param }}",
+      "updated": "識別碼為 {{ param }} 的 Person 更新成功",
+      "deleted": "識別碼為 {{ param }} 的 Person 刪除成功",
+      "delete": {
+        "question": "您確定要刪除 Person {{ id }} 嗎?"
+      },
+      "detail": {
+        "title": "Person"
+      },
+      "id": "ID",
+      "idno": "Idno",
+      "name": "Name",
+      "phone": "Phone",
+      "createDate": "Create Date",
+      "modifyDate": "Modify Date"
+    }
+  }
+}

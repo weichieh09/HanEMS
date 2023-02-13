@@ -50,27 +50,27 @@ entity BlackList {
 }
 
 relationship ManyToOne {
-	Equipment{item(name)} to Item
+	Equipment{item} to Item
 }
 
 relationship ManyToOne {
-	Equipment{status(name)} to Status
+	Equipment{status} to Status
 }
 
 relationship ManyToOne {
-	LendReturnRecord{equipment(name)} to Equipment
+	LendReturnRecord{equipment} to Equipment
 }
 
 relationship ManyToOne {
-	LendReturnRecord{person(name)} to Person
+	LendReturnRecord{person} to Person
 }
 
 relationship ManyToOne {
-	LendReturnRecord{reason(name)} to Reason
+	LendReturnRecord{reason} to Reason
 }
 
 relationship ManyToOne {
-	BlackList{person(name)} to Person
+	BlackList{person} to Person
 }
 
 filter *

@@ -11,7 +11,17 @@
     <property name="datetimeType" value="datetime(6)" dbms="mysql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023147_added_entity_Equipment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023148_added_entity_Status.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023149_added_entity_Item.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023150_added_entity_Person.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023151_added_entity_Reason.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023152_added_entity_LendReturnRecord.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023153_added_entity_BlackList.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20230213023147_added_entity_constraints_Equipment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023152_added_entity_constraints_LendReturnRecord.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230213023153_added_entity_constraints_BlackList.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

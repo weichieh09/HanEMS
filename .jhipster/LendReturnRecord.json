@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20230213023152",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "lend_return_record",
+  "fields": [
+    {
+      "fieldName": "lendDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "returnDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifyDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "LendReturnRecord",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "equipment",
+      "relationshipName": "equipment",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "person",
+      "relationshipName": "person",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "reason",
+      "relationshipName": "reason",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
