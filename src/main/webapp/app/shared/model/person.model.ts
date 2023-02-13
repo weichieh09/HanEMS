@@ -3,6 +3,9 @@ export interface IPerson {
   idno?: string | null;
   name?: string;
   phone?: string | null;
+  // wccCode
+  reasonId?: string | null;
+  // wccCode
   createDate?: Date | null;
   modifyDate?: Date | null;
 }
@@ -13,6 +16,9 @@ export class Person implements IPerson {
     public idno?: string | null,
     public name?: string,
     public phone?: string | null,
+    // wccCode
+    public reasonId?: string | null,
+    // wccCode
     public createDate?: Date | null,
     public modifyDate?: Date | null
   ) {}
