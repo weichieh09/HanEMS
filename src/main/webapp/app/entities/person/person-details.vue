@@ -25,6 +25,12 @@
             <span>{{ person.phone }}</span>
           </dd>
           <dt>
+            <span v-text="$t('hanEmsApp.person.pending')">Pending</span>
+          </dt>
+          <dd>
+            <span>{{ person.pending }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('hanEmsApp.person.createDate')">Create Date</span>
           </dt>
           <dd>

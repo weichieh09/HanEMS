@@ -21,6 +21,7 @@
       "idno": "Idno",
       "name": "Name",
       "phone": "Phone",
+      "pending": "Pending",
       "createDate": "Create Date",
       "modifyDate": "Modify Date"
     }

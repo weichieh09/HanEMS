@@ -22,9 +22,9 @@ import tech.jhipster.web.util.PaginationUtil;
  */
 @RestController
 @RequestMapping("/api/customized/")
-public class ReasonController {
+public class ReasonCtController {
 
-    private final Logger log = LoggerFactory.getLogger(ReasonController.class);
+    private final Logger log = LoggerFactory.getLogger(ReasonCtController.class);
 
     private static final String ENTITY_NAME = "reason";
 
@@ -37,7 +37,7 @@ public class ReasonController {
 
     private final ReasonQueryService reasonQueryService;
 
-    public ReasonController(ReasonService reasonService, ReasonRepository reasonRepository, ReasonQueryService reasonQueryService) {
+    public ReasonCtController(ReasonService reasonService, ReasonRepository reasonRepository, ReasonQueryService reasonQueryService) {
         this.reasonService = reasonService;
         this.reasonRepository = reasonRepository;
         this.reasonQueryService = reasonQueryService;

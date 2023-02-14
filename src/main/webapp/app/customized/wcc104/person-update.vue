@@ -2,20 +2,14 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2
-          id="hanEmsApp.person.home.createOrEditLabel"
-          data-cy="PersonCreateUpdateHeading"
-          v-text="$t('hanEmsApp.person.home.createOrEditLabel')"
-        >
-          Create or edit a Person
-        </h2>
+        <h2 id="hanEmsApp.person.home.createOrEditLabel" data-cy="PersonCreateUpdateHeading">歸還</h2>
         <div>
           <div class="form-group" v-if="person.id">
-            <label for="id" v-text="$t('global.field.id')">ID</label>
+            <label for="id">編號</label>
             <input type="text" class="form-control" id="id" name="id" v-model="person.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('hanEmsApp.person.idno')" for="person-idno">Idno</label>
+            <label class="form-control-label" for="person-idno">學號</label>
             <input
               type="text"
               class="form-control"
@@ -27,7 +21,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('hanEmsApp.person.name')" for="person-name">Name</label>
+            <label class="form-control-label" for="person-name">姓名</label>
             <input
               type="text"
               class="form-control"
@@ -39,13 +33,11 @@
               required
             />
             <div v-if="$v.person.name.$anyDirty && $v.person.name.$invalid">
-              <small class="form-text text-danger" v-if="!$v.person.name.required" v-text="$t('entity.validation.required')">
-                This field is required.
-              </small>
+              <small class="form-text text-danger" v-if="!$v.person.name.required"> 必填 </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('hanEmsApp.person.phone')" for="person-phone">Phone</label>
+            <label class="form-control-label" for="person-phone">手機</label>
             <input
               type="text"
               class="form-control"
@@ -56,17 +48,24 @@
               v-model="$v.person.phone.$model"
             />
             <div v-if="$v.person.phone.$anyDirty && $v.person.phone.$invalid">
-              <small
-                class="form-text text-danger"
-                v-if="!$v.person.phone.pattern"
-                v-text="$t('entity.validation.pattern', { pattern: 'Phone' })"
-              >
-                This field should follow pattern for "Phone".
-              </small>
+              <small class="form-text text-danger" v-if="!$v.person.phone.pattern"> 格式錯誤 </small>
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('hanEmsApp.person.pending')" for="person-pending">Pending</label>
+          <div style="display: none" class="form-group">
+            <label class="form-control-label" for="reasonId">用途</label>
+            <select class="form-control" id="person-reasonId" data-cy="reasonId" name="reasonId" v-model="person.reasonId">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="person.reasonId && reasonOption.id === person.reasonId ? person.reasonId : reasonOption.id"
+                v-for="reasonOption in reasons"
+                :key="reasonOption.id"
+              >
+                {{ reasonOption.name }}
+              </option>
+            </select>
+          </div>
+          <div style="display: none" class="form-group">
+            <label class="form-control-label" v-text="$t('hanEmsApp.person.pending')" for="person-pending">待處理</label>
             <input
               type="number"
               class="form-control"
@@ -77,7 +76,7 @@
               v-model.number="$v.person.pending.$model"
             />
           </div>
-          <div class="form-group">
+          <div style="display: none" class="form-group">
             <label class="form-control-label" v-text="$t('hanEmsApp.person.createDate')" for="person-createDate">Create Date</label>
             <div class="d-flex">
               <input
@@ -92,7 +91,7 @@
               />
             </div>
           </div>
-          <div class="form-group">
+          <div style="display: none" class="form-group">
             <label class="form-control-label" v-text="$t('hanEmsApp.person.modifyDate')" for="person-modifyDate">Modify Date</label>
             <div class="d-flex">
               <input
@@ -119,7 +118,7 @@
             :disabled="$v.person.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span v-text="$t('entity.action.save')">Save</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>送出</span>
           </button>
         </div>
       </form>

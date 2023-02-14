@@ -64,7 +64,19 @@
               </option>
             </select>
           </div>
-          <div class="form-group">
+          <div style="display: none" class="form-group">
+            <label class="form-control-label" v-text="$t('hanEmsApp.person.pending')" for="person-pending">待處理</label>
+            <input
+              type="number"
+              class="form-control"
+              name="pending"
+              id="person-pending"
+              data-cy="pending"
+              :class="{ valid: !$v.person.pending.$invalid, invalid: $v.person.pending.$invalid }"
+              v-model.number="$v.person.pending.$model"
+            />
+          </div>
+          <div style="display: none" class="form-group">
             <label class="form-control-label" v-text="$t('hanEmsApp.person.createDate')" for="person-createDate">Create Date</label>
             <div class="d-flex">
               <input
@@ -79,7 +91,7 @@
               />
             </div>
           </div>
-          <div class="form-group">
+          <div style="display: none" class="form-group">
             <label class="form-control-label" v-text="$t('hanEmsApp.person.modifyDate')" for="person-modifyDate">Modify Date</label>
             <div class="d-flex">
               <input

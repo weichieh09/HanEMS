@@ -1,4 +1,4 @@
-import { Component, Vue, Inject } from 'vue-property-decorator';
+import { Component, Vue, Inject, Provide } from 'vue-property-decorator';
 
 import { required } from 'vuelidate/lib/validators';
 import dayjs from 'dayjs';
@@ -7,7 +7,9 @@ import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 import AlertService from '@/shared/alert/alert.service';
 
 import { IPerson, Person } from '@/shared/model/person.model';
+import { IReason } from '@/shared/model/reason.model';
 import PersonService from './person.service';
+import ReasonService from './reason.service';
 
 const validations: any = {
   person: {
@@ -26,18 +28,22 @@ const validations: any = {
   validations,
 })
 export default class PersonUpdate extends Vue {
-  @Inject('personService') private personService: () => PersonService;
+  @Provide('personService') private personService = () => new PersonService();
+  @Provide('reasonService') private reasonService = () => new ReasonService();
   @Inject('alertService') private alertService: () => AlertService;
 
   public person: IPerson = new Person();
   public isSaving = false;
   public currentLanguage = '';
 
+  public reasons: IReason[] = [];
+
   beforeRouteEnter(to, from, next) {
     next(vm => {
       if (to.params.personId) {
         vm.retrievePerson(to.params.personId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -53,6 +59,9 @@ export default class PersonUpdate extends Vue {
 
   public save(): void {
     this.isSaving = true;
+    // wccCode
+    this.person.pending = -1;
+    // wccCode
     if (this.person.id) {
       this.personService()
         .update(this.person)
@@ -78,7 +87,7 @@ export default class PersonUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('hanEmsApp.person.created', { param: param.id });
+          const message = this.$t('歸還登記成功，識別碼為 ' + param.id + ' ');
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',
@@ -134,5 +143,11 @@ export default class PersonUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.reasonService()
+      .retrieve()
+      .then(res => {
+        this.reasons = res.data;
+      });
+  }
 }

@@ -21,6 +21,8 @@ public class PersonDTO implements Serializable {
     @Pattern(regexp = "09\\d{8}")
     private String phone;
 
+    private Integer pending;
+
     private Instant createDate;
 
     private Instant modifyDate;
@@ -55,6 +57,14 @@ public class PersonDTO implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Integer getPending() {
+        return pending;
+    }
+
+    public void setPending(Integer pending) {
+        this.pending = pending;
     }
 
     public Instant getCreateDate() {
@@ -102,6 +112,7 @@ public class PersonDTO implements Serializable {
             ", idno='" + getIdno() + "'" +
             ", name='" + getName() + "'" +
             ", phone='" + getPhone() + "'" +
+            ", pending=" + getPending() +
             ", createDate='" + getCreateDate() + "'" +
             ", modifyDate='" + getModifyDate() + "'" +
             "}";

@@ -3,6 +3,7 @@ export interface IPerson {
   idno?: string | null;
   name?: string;
   phone?: string | null;
+  pending?: number | null;
   // wccCode
   reasonId?: string | null;
   // wccCode
@@ -16,6 +17,7 @@ export class Person implements IPerson {
     public idno?: string | null,
     public name?: string,
     public phone?: string | null,
+    public pending?: number | null,
     // wccCode
     public reasonId?: string | null,
     // wccCode

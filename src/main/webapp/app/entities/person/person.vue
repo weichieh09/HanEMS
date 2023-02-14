@@ -44,6 +44,10 @@
               <span v-text="$t('hanEmsApp.person.phone')">Phone</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'phone'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('pending')">
+              <span v-text="$t('hanEmsApp.person.pending')">Pending</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'pending'"></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('createDate')">
               <span v-text="$t('hanEmsApp.person.createDate')">Create Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
@@ -63,6 +67,7 @@
             <td>{{ person.idno }}</td>
             <td>{{ person.name }}</td>
             <td>{{ person.phone }}</td>
+            <td>{{ person.pending }}</td>
             <td>{{ person.createDate ? $d(Date.parse(person.createDate), 'short') : '' }}</td>
             <td>{{ person.modifyDate ? $d(Date.parse(person.modifyDate), 'short') : '' }}</td>
             <td class="text-right">

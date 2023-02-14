@@ -18,6 +18,7 @@ const validations: any = {
       required,
     },
     phone: {},
+    pending: {},
     createDate: {},
     modifyDate: {},
   },
@@ -58,6 +59,9 @@ export default class PersonUpdate extends Vue {
 
   public save(): void {
     this.isSaving = true;
+    // wccCode
+    this.person.pending = 1;
+    // wccCode
     if (this.person.id) {
       this.personService()
         .update(this.person)
@@ -83,7 +87,7 @@ export default class PersonUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('hanEmsApp.person.created', { param: param.id });
+          const message = this.$t('借用登記成功，識別碼為 ' + param.id + ' ');
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

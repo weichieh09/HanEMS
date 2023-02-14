@@ -26,9 +26,9 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api/customized/")
-public class ItemViewController {
+public class ItemViewCtController {
 
-    private final Logger log = LoggerFactory.getLogger(ItemViewController.class);
+    private final Logger log = LoggerFactory.getLogger(ItemViewCtController.class);
 
     private final ItemViewService itemViewService;
 
@@ -36,7 +36,7 @@ public class ItemViewController {
 
     private final ItemViewQueryService itemViewQueryService;
 
-    public ItemViewController(
+    public ItemViewCtController(
         ItemViewService itemViewService,
         ItemViewRepository itemViewRepository,
         ItemViewQueryService itemViewQueryService

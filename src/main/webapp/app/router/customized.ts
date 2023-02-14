@@ -2,7 +2,7 @@ import { Authority } from '@/shared/security/authority';
 
 const Wcc102Component = () => import('@/customized/wcc102/item-view.vue');
 const Wcc103Component = () => import('@/customized/wcc103/person-update.vue');
-const Wcc104Component = () => import('@/customized/wcc104/wcc104.vue');
+const Wcc104Component = () => import('@/customized/wcc104/person-update.vue');
 // const Wcc105Component = () => import('@/customized/wcc105/wcc105.vue');
 // const Wcc105Update = () => import('@/customized/wcc105/wcc105Update.vue');
 // const Wcc105Details = () => import('@/customized/wcc105/wcc105Details.vue');

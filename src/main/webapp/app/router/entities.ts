@@ -259,6 +259,18 @@ export default {
       component: ItemViewDetails,
       meta: { authorities: [Authority.USER] },
     },
+    {
+      path: '/item-view',
+      name: 'ItemView',
+      component: ItemView,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view/:itemViewId/view',
+      name: 'ItemViewView',
+      component: ItemViewDetails,
+      meta: { authorities: [Authority.USER] },
+    },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
   ],
 };

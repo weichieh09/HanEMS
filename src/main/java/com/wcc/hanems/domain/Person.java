@@ -31,6 +31,9 @@ public class Person implements Serializable {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "pending")
+    private Integer pending;
+
     @Column(name = "create_date")
     private Instant createDate;
 
@@ -91,6 +94,19 @@ public class Person implements Serializable {
         this.phone = phone;
     }
 
+    public Integer getPending() {
+        return this.pending;
+    }
+
+    public Person pending(Integer pending) {
+        this.setPending(pending);
+        return this;
+    }
+
+    public void setPending(Integer pending) {
+        this.pending = pending;
+    }
+
     public Instant getCreateDate() {
         return this.createDate;
     }
@@ -144,6 +160,7 @@ public class Person implements Serializable {
             ", idno='" + getIdno() + "'" +
             ", name='" + getName() + "'" +
             ", phone='" + getPhone() + "'" +
+            ", pending=" + getPending() +
             ", createDate='" + getCreateDate() + "'" +
             ", modifyDate='" + getModifyDate() + "'" +
             "}";

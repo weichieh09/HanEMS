@@ -29,6 +29,8 @@ public class PersonCriteria implements Serializable, Criteria {
 
     private StringFilter phone;
 
+    private IntegerFilter pending;
+
     private InstantFilter createDate;
 
     private InstantFilter modifyDate;
@@ -42,6 +44,7 @@ public class PersonCriteria implements Serializable, Criteria {
         this.idno = other.idno == null ? null : other.idno.copy();
         this.name = other.name == null ? null : other.name.copy();
         this.phone = other.phone == null ? null : other.phone.copy();
+        this.pending = other.pending == null ? null : other.pending.copy();
         this.createDate = other.createDate == null ? null : other.createDate.copy();
         this.modifyDate = other.modifyDate == null ? null : other.modifyDate.copy();
         this.distinct = other.distinct;
@@ -112,6 +115,21 @@ public class PersonCriteria implements Serializable, Criteria {
         this.phone = phone;
     }
 
+    public IntegerFilter getPending() {
+        return pending;
+    }
+
+    public IntegerFilter pending() {
+        if (pending == null) {
+            pending = new IntegerFilter();
+        }
+        return pending;
+    }
+
+    public void setPending(IntegerFilter pending) {
+        this.pending = pending;
+    }
+
     public InstantFilter getCreateDate() {
         return createDate;
     }
@@ -164,6 +182,7 @@ public class PersonCriteria implements Serializable, Criteria {
             Objects.equals(idno, that.idno) &&
             Objects.equals(name, that.name) &&
             Objects.equals(phone, that.phone) &&
+            Objects.equals(pending, that.pending) &&
             Objects.equals(createDate, that.createDate) &&
             Objects.equals(modifyDate, that.modifyDate) &&
             Objects.equals(distinct, that.distinct)
@@ -172,7 +191,7 @@ public class PersonCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idno, name, phone, createDate, modifyDate, distinct);
+        return Objects.hash(id, idno, name, phone, pending, createDate, modifyDate, distinct);
     }
 
     // prettier-ignore
@@ -183,6 +202,7 @@ public class PersonCriteria implements Serializable, Criteria {
             (idno != null ? "idno=" + idno + ", " : "") +
             (name != null ? "name=" + name + ", " : "") +
             (phone != null ? "phone=" + phone + ", " : "") +
+            (pending != null ? "pending=" + pending + ", " : "") +
             (createDate != null ? "createDate=" + createDate + ", " : "") +
             (modifyDate != null ? "modifyDate=" + modifyDate + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +

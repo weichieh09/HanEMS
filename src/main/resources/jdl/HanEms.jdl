@@ -23,6 +23,7 @@ entity Person {
 	idno String,
 	name String required,
 	phone String pattern(/09\d{8}/),
+	pending Integer,
 	createDate Instant,
 	modifyDate Instant,
 }

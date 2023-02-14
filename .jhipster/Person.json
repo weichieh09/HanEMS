@@ -21,6 +21,10 @@
       "fieldValidateRulesPattern": "09\\d{8}"
     },
     {
+      "fieldName": "pending",
+      "fieldType": "Integer"
+    },
+    {
       "fieldName": "createDate",
       "fieldType": "Instant"
     },

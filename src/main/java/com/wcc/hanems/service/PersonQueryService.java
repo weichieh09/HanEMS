@@ -99,6 +99,9 @@ public class PersonQueryService extends QueryService<Person> {
             if (criteria.getPhone() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getPhone(), Person_.phone));
             }
+            if (criteria.getPending() != null) {
+                specification = specification.and(buildRangeSpecification(criteria.getPending(), Person_.pending));
+            }
             if (criteria.getCreateDate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getCreateDate(), Person_.createDate));
             }
