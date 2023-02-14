@@ -90,6 +90,9 @@ public class EquipmentQueryService extends QueryService<Equipment> {
             if (criteria.getId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getId(), Equipment_.id));
             }
+            if (criteria.getIdno() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getIdno(), Equipment_.idno));
+            }
             if (criteria.getName() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getName(), Equipment_.name));
             }

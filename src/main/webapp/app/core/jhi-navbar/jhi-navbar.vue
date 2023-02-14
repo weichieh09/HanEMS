@@ -24,6 +24,12 @@
             <span v-text="$t('global.menu.home')">Home</span>
           </span>
         </b-nav-item> -->
+        <b-nav-item to="/wcc105" v-if="authenticated">
+          <span>
+            <font-awesome-icon icon="book" />
+            <span>申請單</span>
+          </span>
+        </b-nav-item>
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />

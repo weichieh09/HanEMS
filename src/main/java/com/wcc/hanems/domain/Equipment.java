@@ -20,6 +20,9 @@ public class Equipment implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "idno")
+    private String idno;
+
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
@@ -53,6 +56,19 @@ public class Equipment implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getIdno() {
+        return this.idno;
+    }
+
+    public Equipment idno(String idno) {
+        this.setIdno(idno);
+        return this;
+    }
+
+    public void setIdno(String idno) {
+        this.idno = idno;
     }
 
     public String getName() {
@@ -157,6 +173,7 @@ public class Equipment implements Serializable {
     public String toString() {
         return "Equipment{" +
             "id=" + getId() +
+            ", idno='" + getIdno() + "'" +
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", createDate='" + getCreateDate() + "'" +

@@ -14,6 +14,9 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="idno" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -55,6 +58,7 @@
                   tableName="equipment"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
+            <column name="idno" type="string"/>
             <column name="name" type="string"/>
             <column name="description" type="clob"/>
             <column name="create_date" type="date"/>

@@ -3,8 +3,8 @@ import { Authority } from '@/shared/security/authority';
 const Wcc102Component = () => import('@/customized/wcc102/item-view.vue');
 const Wcc103Component = () => import('@/customized/wcc103/person-update.vue');
 const Wcc104Component = () => import('@/customized/wcc104/person-update.vue');
-// const Wcc105Component = () => import('@/customized/wcc105/wcc105.vue');
-// const Wcc105Update = () => import('@/customized/wcc105/wcc105Update.vue');
+const Wcc105Component = () => import('@/customized/wcc105/person.vue');
+const Wcc105Edit = () => import('@/customized/wcc105/equipment.vue');
 // const Wcc105Details = () => import('@/customized/wcc105/wcc105Details.vue');
 // const Wcc106Component = () => import('@/customized/wcc106/wcc106.vue');
 // const Wcc106Update = () => import('@/customized/wcc106/wcc106Update.vue');
@@ -26,24 +26,18 @@ export default [
     name: 'Wcc104',
     component: Wcc104Component,
   },
-  // {
-  //   path: '/wcc105',
-  //   name: 'Wcc105',
-  //   component: Wcc105Component,
-  //   meta: { authorities: [Authority.USER] },
-  // },
-  // {
-  //   path: '/wcc105/new',
-  //   name: 'Wcc105Create',
-  //   component: Wcc105Update,
-  //   meta: { authorities: [Authority.USER] },
-  // },
-  // {
-  //   path: '/wcc105/:eqItemId/edit',
-  //   name: 'Wcc105Edit',
-  //   component: Wcc105Update,
-  //   meta: { authorities: [Authority.USER] },
-  // },
+  {
+    path: '/wcc105',
+    name: 'Wcc105',
+    component: Wcc105Component,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc105/:personId/:personPending/edit',
+    name: 'Wcc105Edit',
+    component: Wcc105Edit,
+    meta: { authorities: [Authority.USER] },
+  },
   // {
   //   path: '/wcc105/:eqItemId/view',
   //   name: 'Wcc105View',

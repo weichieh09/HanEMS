@@ -15,6 +15,18 @@
             <input type="text" class="form-control" id="id" name="id" v-model="equipment.id" readonly />
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="$t('hanEmsApp.equipment.idno')" for="equipment-idno">Idno</label>
+            <input
+              type="text"
+              class="form-control"
+              name="idno"
+              id="equipment-idno"
+              data-cy="idno"
+              :class="{ valid: !$v.equipment.idno.$invalid, invalid: $v.equipment.idno.$invalid }"
+              v-model="$v.equipment.idno.$model"
+            />
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="$t('hanEmsApp.equipment.name')" for="equipment-name">Name</label>
             <input
               type="text"

@@ -3,6 +3,7 @@ import { IStatus } from '@/shared/model/status.model';
 
 export interface IEquipment {
   id?: number;
+  idno?: string | null;
   name?: string;
   description?: string | null;
   createDate?: Date | null;
@@ -14,6 +15,7 @@ export interface IEquipment {
 export class Equipment implements IEquipment {
   constructor(
     public id?: number,
+    public idno?: string | null,
     public name?: string,
     public description?: string | null,
     public createDate?: Date | null,

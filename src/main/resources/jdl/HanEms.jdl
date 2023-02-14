@@ -1,4 +1,5 @@
 entity Equipment {
+    idno String,
 	name String required,
 	description TextBlob,
 	createDate Instant,

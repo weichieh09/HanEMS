@@ -20,6 +20,7 @@ import EquipmentService from './equipment.service';
 
 const validations: any = {
   equipment: {
+    idno: {},
     name: {
       required,
     },

@@ -14,6 +14,8 @@ public class EquipmentDTO implements Serializable {
 
     private Long id;
 
+    private String idno;
+
     @NotNull
     private String name;
 
@@ -34,6 +36,14 @@ public class EquipmentDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getIdno() {
+        return idno;
+    }
+
+    public void setIdno(String idno) {
+        this.idno = idno;
     }
 
     public String getName() {
@@ -110,6 +120,7 @@ public class EquipmentDTO implements Serializable {
     public String toString() {
         return "EquipmentDTO{" +
             "id=" + getId() +
+            ", idno='" + getIdno() + "'" +
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", createDate='" + getCreateDate() + "'" +

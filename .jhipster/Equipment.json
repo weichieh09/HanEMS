@@ -6,6 +6,10 @@
   "entityTableName": "equipment",
   "fields": [
     {
+      "fieldName": "idno",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "name",
       "fieldType": "String",
       "fieldValidateRules": ["required"]

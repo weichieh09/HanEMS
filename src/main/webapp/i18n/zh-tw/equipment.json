@@ -18,6 +18,7 @@
         "title": "Equipment"
       },
       "id": "ID",
+      "idno": "Idno",
       "name": "Name",
       "description": "Description",
       "createDate": "Create Date",

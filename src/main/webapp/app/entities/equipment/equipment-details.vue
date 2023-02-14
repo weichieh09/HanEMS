@@ -7,6 +7,12 @@
         </h2>
         <dl class="row jh-entity-details">
           <dt>
+            <span v-text="$t('hanEmsApp.equipment.idno')">Idno</span>
+          </dt>
+          <dd>
+            <span>{{ equipment.idno }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('hanEmsApp.equipment.name')">Name</span>
           </dt>
           <dd>

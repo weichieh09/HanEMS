@@ -23,6 +23,8 @@ public class EquipmentCriteria implements Serializable, Criteria {
 
     private LongFilter id;
 
+    private StringFilter idno;
+
     private StringFilter name;
 
     private InstantFilter createDate;
@@ -39,6 +41,7 @@ public class EquipmentCriteria implements Serializable, Criteria {
 
     public EquipmentCriteria(EquipmentCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
+        this.idno = other.idno == null ? null : other.idno.copy();
         this.name = other.name == null ? null : other.name.copy();
         this.createDate = other.createDate == null ? null : other.createDate.copy();
         this.modifyDate = other.modifyDate == null ? null : other.modifyDate.copy();
@@ -65,6 +68,21 @@ public class EquipmentCriteria implements Serializable, Criteria {
 
     public void setId(LongFilter id) {
         this.id = id;
+    }
+
+    public StringFilter getIdno() {
+        return idno;
+    }
+
+    public StringFilter idno() {
+        if (idno == null) {
+            idno = new StringFilter();
+        }
+        return idno;
+    }
+
+    public void setIdno(StringFilter idno) {
+        this.idno = idno;
     }
 
     public StringFilter getName() {
@@ -161,6 +179,7 @@ public class EquipmentCriteria implements Serializable, Criteria {
         final EquipmentCriteria that = (EquipmentCriteria) o;
         return (
             Objects.equals(id, that.id) &&
+            Objects.equals(idno, that.idno) &&
             Objects.equals(name, that.name) &&
             Objects.equals(createDate, that.createDate) &&
             Objects.equals(modifyDate, that.modifyDate) &&
@@ -172,7 +191,7 @@ public class EquipmentCriteria implements Serializable, Criteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, createDate, modifyDate, itemId, statusId, distinct);
+        return Objects.hash(id, idno, name, createDate, modifyDate, itemId, statusId, distinct);
     }
 
     // prettier-ignore
@@ -180,6 +199,7 @@ public class EquipmentCriteria implements Serializable, Criteria {
     public String toString() {
         return "EquipmentCriteria{" +
             (id != null ? "id=" + id + ", " : "") +
+            (idno != null ? "idno=" + idno + ", " : "") +
             (name != null ? "name=" + name + ", " : "") +
             (createDate != null ? "createDate=" + createDate + ", " : "") +
             (modifyDate != null ? "modifyDate=" + modifyDate + ", " : "") +

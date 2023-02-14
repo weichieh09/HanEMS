@@ -20,10 +20,12 @@ public interface EquipmentMapper extends EntityMapper<EquipmentDTO, Equipment> {
     @Named("itemId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
     ItemDTO toDtoItemId(Item item);
 
     @Named("statusId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
     StatusDTO toDtoStatusId(Status status);
 }
