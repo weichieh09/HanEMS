@@ -10,6 +10,7 @@ import com.wcc.hanems.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Instant;
+import java.util.Objects;
 import java.util.Optional;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link com.wcc.hanems.domain.Person}.
  */
 @RestController
-@RequestMapping("/api/customized/")
+@RequestMapping("/api")
 public class PersonCtController {
 
     private final Logger log = LoggerFactory.getLogger(PersonCtController.class);
@@ -51,7 +52,7 @@ public class PersonCtController {
         this.personQueryService = personQueryService;
     }
 
-    @PostMapping("/people")
+    @PostMapping("/customized/people")
     public ResponseEntity<PersonDTO> partialUpdatePerson(@Valid @RequestBody Wcc103ReqDTO reqDTO) throws URISyntaxException {
         log.debug("REST request to save Person : {}", reqDTO);
         if (reqDTO.getId() != null) {
@@ -72,6 +73,34 @@ public class PersonCtController {
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    @PutMapping("/wcc105/{id}")
+    public ResponseEntity<PersonDTO> updatePerson(
+        @PathVariable(value = "id", required = false) final Long id,
+        @Valid @RequestBody PersonDTO reqDTO
+    ) throws URISyntaxException {
+        log.debug("REST request to update Person : {}, {}", id, reqDTO);
+        if (reqDTO.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, reqDTO.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!personRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        PersonDTO personDTO = personService.findOne(reqDTO.getId()).get();
+        personDTO.setPending(0);
+        personDTO.setModifyDate(Instant.now());
+
+        PersonDTO result = personService.update(personDTO);
+        return ResponseEntity
+            .ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, personDTO.getId().toString()))
             .body(result);
     }
 }

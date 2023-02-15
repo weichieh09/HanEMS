@@ -4,12 +4,12 @@ import Vue2Filters from 'vue2-filters';
 import { IEquipment, Equipment } from '@/shared/model/equipment.model';
 import { ILendReturnRecord, LendReturnRecord } from '@/shared/model/lend-return-record.model';
 import { IPerson, Person } from '@/shared/model/person.model';
-import { IReason, Reason } from '@/shared/model/reason.model';
 
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import EquipmentService from './equipment.service';
 import LendReturnRecordService from './lend-return-record.service';
+import PersonService from './person.service';
 import AlertService from '@/shared/alert/alert.service';
 
 @Component({
@@ -18,6 +18,7 @@ import AlertService from '@/shared/alert/alert.service';
 export default class MyEquipment extends mixins(JhiDataUtils) {
   @Provide('equipmentService') private equipmentService = () => new EquipmentService();
   @Provide('LendReturnRecordService') private lendReturnRecordService = () => new LendReturnRecordService();
+  @Provide('personService') private personService = () => new PersonService();
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
@@ -33,6 +34,7 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
 
   public equipment: IEquipment[] = [];
   public lendReturnRecord: ILendReturnRecord = new LendReturnRecord();
+  public person: IPerson[] = [];
 
   public isFetching = false;
   public isSaving = false;
@@ -64,17 +66,30 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
     var equipment = new Equipment();
     equipment.id = Number(equipmentId);
 
-    this.lendReturnRecord.lendDate = new Date();
-    this.lendReturnRecord.person = person;
-    this.lendReturnRecord.equipment = equipment;
+    var lendReturnRecord = new LendReturnRecord();
+    lendReturnRecord.lendDate = new Date();
+    lendReturnRecord.person = person;
+    lendReturnRecord.equipment = equipment;
+    this.lendReturnRecord = lendReturnRecord;
 
-    this.save();
-
-    this.retrieveAllEquipments();
+    this.saveRecord('Rent');
   }
 
   public returnEq(equipmentId): void {
-    alert('returnEq - equipmentId: ' + equipmentId);
+    var person = new Person();
+    person.id = this.personId;
+
+    var equipment = new Equipment();
+    equipment.id = Number(equipmentId);
+
+    var lendReturnRecord = new LendReturnRecord();
+    lendReturnRecord.lendDate = new Date();
+    lendReturnRecord.returnDate = new Date();
+    lendReturnRecord.person = person;
+    lendReturnRecord.equipment = equipment;
+    this.lendReturnRecord = lendReturnRecord;
+
+    this.saveRecord('Return');
   }
 
   public retrieveAllEquipments(): void {
@@ -161,7 +176,16 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
     (<any>this.$refs.removeEntity).hide();
   }
 
-  public save(): void {
+  public finish(): void {
+    var person = new Person();
+    person.id = this.personId;
+    person.name = '';
+    person.pending = 0;
+    this.person = person;
+    this.savePerson();
+  }
+
+  public saveRecord(type): void {
     this.isSaving = true;
     if (this.lendReturnRecord.id) {
       this.lendReturnRecordService()
@@ -184,11 +208,55 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
         });
     } else {
       this.lendReturnRecordService()
-        .create(this.lendReturnRecord)
+        .create(this.lendReturnRecord, type)
+        .then(param => {
+          this.isSaving = false;
+          // this.$router.go(-1);
+          this.retrieveAllEquipments();
+          const message = this.$t('操作成功!');
+          (this.$root as any).$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Success',
+            variant: 'success',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
+        });
+    }
+  }
+
+  public savePerson(): void {
+    this.isSaving = true;
+    if (this.person.id) {
+      this.personService()
+        .update(this.person)
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('hanEmsApp.lendReturnRecord.created', { param: param.id });
+          const message = this.$t('操作成功!');
+          return (this.$root as any).$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Success',
+            variant: 'success',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
+        });
+    } else {
+      this.personService()
+        .create(this.person)
+        .then(param => {
+          this.isSaving = false;
+          this.$router.go(-1);
+          const message = this.$t('借用登記成功，識別碼為 ' + param.id + ' ');
           (this.$root as any).$bvToast.toast(message.toString(), {
             toaster: 'b-toaster-top-center',
             title: 'Success',

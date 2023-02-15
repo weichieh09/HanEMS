@@ -82,7 +82,7 @@
                   custom
                   v-slot="{ navigate }"
                 >
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                  <button @click="navigate" class="btn btn-primary btn edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline">開始</span>
                   </button>
@@ -90,7 +90,7 @@
                 <b-button
                   v-on:click="prepareRemove(person)"
                   variant="danger"
-                  class="btn btn-sm"
+                  class="btn btn"
                   data-cy="entityDeleteButton"
                   v-b-modal.removeEntity
                 >

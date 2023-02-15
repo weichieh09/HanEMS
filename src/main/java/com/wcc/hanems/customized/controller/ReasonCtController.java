@@ -21,7 +21,7 @@ import tech.jhipster.web.util.PaginationUtil;
  * REST controller for managing {@link com.wcc.hanems.domain.Reason}.
  */
 @RestController
-@RequestMapping("/api/customized/")
+@RequestMapping("/api")
 public class ReasonCtController {
 
     private final Logger log = LoggerFactory.getLogger(ReasonCtController.class);
@@ -50,7 +50,7 @@ public class ReasonCtController {
      * @param criteria the criteria which the requested entities should match.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of reasons in body.
      */
-    @GetMapping("/reasons")
+    @GetMapping("/customized/reasons")
     public ResponseEntity<List<ReasonDTO>> getAllReasons(
         ReasonCriteria criteria,
         @org.springdoc.api.annotations.ParameterObject Pageable pageable

@@ -62,7 +62,7 @@ export default class PersonService {
   public update(entity: IPerson): Promise<IPerson> {
     return new Promise<IPerson>((resolve, reject) => {
       axios
-        .put(`${baseApiUrl}/${entity.id}`, entity)
+        .put(`api/wcc105/${entity.id}`, entity)
         .then(res => {
           resolve(res.data);
         })

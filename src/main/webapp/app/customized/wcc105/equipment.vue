@@ -1,13 +1,17 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="EquipmentHeading">
-      <span id="equipment-heading">設備</span>
+      <span id="equipment-heading">{{ personPending == 1 ? '[出借]' : '[歸還]' }} 設備</span>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+        <button class="btn btn-primary mr-2" v-on:click="finish" :disabled="isFetching">
+          <font-awesome-icon icon="save" :spin="isFetching"></font-awesome-icon>
+          <span>完成</span>
+        </button>
+        <!-- <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span>更新</span>
         </button>
-        <!-- <router-link :to="{ name: 'EquipmentCreate' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'EquipmentCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -72,7 +76,17 @@
             <td>{{ equipment.createDate ? $d(Date.parse(equipment.createDate), 'short') : '' }}</td>
             <td>{{ equipment.modifyDate ? $d(Date.parse(equipment.modifyDate), 'short') : '' }}</td> -->
             <td>{{ equipment.item.name }}</td>
-            <td>{{ equipment.status.name }}</td>
+            <td>
+              <div v-if="equipment.status.id == 1">
+                <span style="background-color: springgreen; color: green">{{ equipment.status.name }}</span>
+              </div>
+              <div v-if="equipment.status.id == 2">
+                <span style="background-color: pink; color: red">{{ equipment.status.name }}</span>
+              </div>
+              <div v-if="equipment.status.id == 3">
+                <span style="background-color: darkgrey; color: black">{{ equipment.status.name }}</span>
+              </div>
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <!-- <router-link :to="{ name: 'EquipmentView', params: { equipmentId: equipment.id } }" custom v-slot="{ navigate }">
@@ -81,11 +95,21 @@
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link> -->
-                <button @click="rentEq(equipment.id)" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                <button
+                  @click="rentEq(equipment.id)"
+                  :disabled="equipment.status.id != 1 || equipment.status.id == 3"
+                  class="btn btn-outline-primary btn edit"
+                  data-cy="entityEditButton"
+                >
                   <font-awesome-icon icon="chevron-circle-left"></font-awesome-icon>
                   <span class="d-none d-md-inline">出借</span>
                 </button>
-                <button @click="returnEq(equipment.id)" :disabled="true" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                <button
+                  @click="returnEq(equipment.id)"
+                  :disabled="equipment.status.id != 2 || equipment.status.id == 3"
+                  class="btn btn-outline-primary btn edit"
+                  data-cy="entityEditButton"
+                >
                   <span class="d-none d-md-inline">歸還</span>
                   <font-awesome-icon icon="chevron-circle-right"></font-awesome-icon>
                 </button>
