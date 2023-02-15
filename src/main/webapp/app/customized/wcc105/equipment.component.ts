@@ -1,18 +1,23 @@
 import { mixins } from 'vue-class-component';
 import { Component, Vue, Inject, Provide } from 'vue-property-decorator';
 import Vue2Filters from 'vue2-filters';
-import { IEquipment } from '@/shared/model/equipment.model';
+import { IEquipment, Equipment } from '@/shared/model/equipment.model';
+import { ILendReturnRecord, LendReturnRecord } from '@/shared/model/lend-return-record.model';
+import { IPerson, Person } from '@/shared/model/person.model';
+import { IReason, Reason } from '@/shared/model/reason.model';
 
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import EquipmentService from './equipment.service';
+import LendReturnRecordService from './lend-return-record.service';
 import AlertService from '@/shared/alert/alert.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
 })
-export default class Equipment extends mixins(JhiDataUtils) {
+export default class MyEquipment extends mixins(JhiDataUtils) {
   @Provide('equipmentService') private equipmentService = () => new EquipmentService();
+  @Provide('LendReturnRecordService') private lendReturnRecordService = () => new LendReturnRecordService();
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
@@ -27,8 +32,10 @@ export default class Equipment extends mixins(JhiDataUtils) {
   public personPending = null;
 
   public equipment: IEquipment[] = [];
+  public lendReturnRecord: ILendReturnRecord = new LendReturnRecord();
 
   public isFetching = false;
+  public isSaving = false;
 
   beforeRouteEnter(to, from, next) {
     next(vm => {
@@ -50,12 +57,24 @@ export default class Equipment extends mixins(JhiDataUtils) {
     this.retrieveAllEquipments();
   }
 
-  public test1(): void {
-    alert('out');
+  public rentEq(equipmentId): void {
+    var person = new Person();
+    person.id = this.personId;
+
+    var equipment = new Equipment();
+    equipment.id = Number(equipmentId);
+
+    this.lendReturnRecord.lendDate = new Date();
+    this.lendReturnRecord.person = person;
+    this.lendReturnRecord.equipment = equipment;
+
+    this.save();
+
+    this.retrieveAllEquipments();
   }
 
-  public test2(): void {
-    alert('in');
+  public returnEq(equipmentId): void {
+    alert('returnEq - equipmentId: ' + equipmentId);
   }
 
   public retrieveAllEquipments(): void {
@@ -140,5 +159,48 @@ export default class Equipment extends mixins(JhiDataUtils) {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public save(): void {
+    this.isSaving = true;
+    if (this.lendReturnRecord.id) {
+      this.lendReturnRecordService()
+        .update(this.lendReturnRecord)
+        .then(param => {
+          this.isSaving = false;
+          this.$router.go(-1);
+          const message = this.$t('hanEmsApp.lendReturnRecord.updated', { param: param.id });
+          return (this.$root as any).$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Info',
+            variant: 'info',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
+        });
+    } else {
+      this.lendReturnRecordService()
+        .create(this.lendReturnRecord)
+        .then(param => {
+          this.isSaving = false;
+          this.$router.go(-1);
+          const message = this.$t('hanEmsApp.lendReturnRecord.created', { param: param.id });
+          (this.$root as any).$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Success',
+            variant: 'success',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
+        });
+    }
   }
 }

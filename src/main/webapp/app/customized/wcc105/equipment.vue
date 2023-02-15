@@ -81,11 +81,11 @@
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link> -->
-                <button @click="test1" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                <button @click="rentEq(equipment.id)" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                   <font-awesome-icon icon="chevron-circle-left"></font-awesome-icon>
                   <span class="d-none d-md-inline">出借</span>
                 </button>
-                <button @click="test2" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
+                <button @click="returnEq(equipment.id)" :disabled="true" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                   <span class="d-none d-md-inline">歸還</span>
                   <font-awesome-icon icon="chevron-circle-right"></font-awesome-icon>
                 </button>
