@@ -20,14 +20,25 @@ export default class Person extends Vue {
   public propOrder = 'id';
   public reverse = false;
   public totalItems = 0;
+  private timerRefresh = null;
 
   public people: IPerson[] = [];
 
   public isFetching = false;
 
-  public mounted(): void {
+  // 跳轉到其他頁關閉 timer
+  public beforeDestroy(): void {
+    clearInterval(this.timerRefresh);
+  }
+
+  public created(): void {
     this.retrieveAllPersons();
-    setInterval(this.retrieveAllPersons, 5000);
+    this.timerRefresh = setInterval(this.retrieveAllPersons, 5000);
+  }
+
+  public mounted(): void {
+    // this.retrieveAllPersons();
+    // setInterval(this.retrieveAllPersons, 5000);
   }
 
   public clear(): void {

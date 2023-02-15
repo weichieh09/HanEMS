@@ -30,8 +30,9 @@ import TranslationService from '@/locale/translation.service';
 
 /* wccCode */
 // 導入全局 BootstrapVue
-import { BootstrapVue } from 'bootstrap-vue';
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons);
 /* wccCode */
 
 /* tslint:disable */

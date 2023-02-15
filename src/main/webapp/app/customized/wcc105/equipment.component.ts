@@ -50,6 +50,14 @@ export default class Equipment extends mixins(JhiDataUtils) {
     this.retrieveAllEquipments();
   }
 
+  public test1(): void {
+    alert('out');
+  }
+
+  public test2(): void {
+    alert('in');
+  }
+
   public retrieveAllEquipments(): void {
     this.isFetching = true;
     const paginationQuery = {
