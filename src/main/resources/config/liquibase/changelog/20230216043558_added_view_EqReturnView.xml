@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity EqReturnView.
+    -->
+    <changeSet id="20230216043558-1" author="wcc">
+        <createView
+            replaceIfExists="true"
+            viewName="eq_return_view">
+            SELECT e.id AS id, e.idno AS idno, e.name AS name, e.item_id AS item_id, e.status_id AS status_id, p.id AS person_id
+            FROM equipment e
+            INNER JOIN lend_return_record lrr ON e.id = lrr.equipment_id
+            INNER JOIN person p ON lrr.person_id = p.id
+            WHERE e.status_id = 2 AND lrr.return_date IS NULL;
+        </createView>
+    </changeSet>
+</databaseChangeLog>

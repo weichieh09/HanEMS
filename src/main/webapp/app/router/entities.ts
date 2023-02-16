@@ -49,6 +49,10 @@ const BlackListDetails = () => import('@/entities/black-list/black-list-details.
 const ItemView = () => import('@/entities/item-view/item-view.vue');
 // prettier-ignore
 const ItemViewDetails = () => import('@/entities/item-view/item-view-details.vue');
+// prettier-ignore
+const EqReturnView = () => import('@/entities/eq-return-view/eq-return-view.vue');
+// prettier-ignore
+const EqReturnViewDetails = () => import('@/entities/eq-return-view/eq-return-view-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -281,6 +285,30 @@ export default {
       path: '/item-view/:itemViewId/view',
       name: 'ItemViewView',
       component: ItemViewDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view',
+      name: 'ItemView',
+      component: ItemView,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/item-view/:itemViewId/view',
+      name: 'ItemViewView',
+      component: ItemViewDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/eq-return-view',
+      name: 'EqReturnView',
+      component: EqReturnView,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: '/eq-return-view/:eqReturnViewId/view',
+      name: 'EqReturnViewView',
+      component: EqReturnViewDetails,
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

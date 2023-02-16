@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20230216043558",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "eq_return_view",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "idno",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "itemId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "statusId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "personId",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "EqReturnView",
+  "pagination": "pagination",
+  "readOnly": true,
+  "relationships": [],
+  "service": "serviceClass"
+}

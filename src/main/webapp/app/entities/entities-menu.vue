@@ -32,6 +32,10 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="$t('global.menu.entities.itemView')">Item View</span>
     </b-dropdown-item>
+    <b-dropdown-item to="/eq-return-view">
+      <font-awesome-icon icon="asterisk" />
+      <span v-text="$t('global.menu.entities.eqReturnView')">Eq Return View</span>
+    </b-dropdown-item>
     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
   </div>
 </template>

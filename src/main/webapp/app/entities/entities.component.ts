@@ -9,6 +9,7 @@ import ReasonService from './reason/reason.service';
 import LendReturnRecordService from './lend-return-record/lend-return-record.service';
 import BlackListService from './black-list/black-list.service';
 import ItemViewService from './item-view/item-view.service';
+import EqReturnViewService from './eq-return-view/eq-return-view.service';
 // jhipster-needle-add-entity-service-to-entities-component-import - JHipster will import entities services here
 
 @Component
@@ -22,5 +23,6 @@ export default class Entities extends Vue {
   @Provide('lendReturnRecordService') private lendReturnRecordService = () => new LendReturnRecordService();
   @Provide('blackListService') private blackListService = () => new BlackListService();
   @Provide('itemViewService') private itemViewService = () => new ItemViewService();
+  @Provide('eqReturnViewService') private eqReturnViewService = () => new EqReturnViewService();
   // jhipster-needle-add-entity-service-to-entities-component - JHipster will import entities services here
 }

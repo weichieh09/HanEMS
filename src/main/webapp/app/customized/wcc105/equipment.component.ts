@@ -4,12 +4,14 @@ import Vue2Filters from 'vue2-filters';
 import { IEquipment, Equipment } from '@/shared/model/equipment.model';
 import { ILendReturnRecord, LendReturnRecord } from '@/shared/model/lend-return-record.model';
 import { IPerson, Person } from '@/shared/model/person.model';
+import { IEqReturnView, EqReturnView } from '@/shared/model/eq-return-view.model';
 
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import EquipmentService from './equipment.service';
 import LendReturnRecordService from './lend-return-record.service';
 import PersonService from './person.service';
+import EqReturnViewService from './eq-return-view.service';
 import AlertService from '@/shared/alert/alert.service';
 
 @Component({
@@ -19,6 +21,7 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
   @Provide('equipmentService') private equipmentService = () => new EquipmentService();
   @Provide('LendReturnRecordService') private lendReturnRecordService = () => new LendReturnRecordService();
   @Provide('personService') private personService = () => new PersonService();
+  @Provide('eqReturnViewService') private eqReturnViewService = () => new EqReturnViewService();
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
@@ -115,6 +118,26 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
           }
         );
     } else {
+      this.isFetching = true;
+      const paginationQuery = {
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort(),
+      };
+      this.eqReturnViewService()
+        .retrieve(paginationQuery, this.personId)
+        .then(
+          res => {
+            this.equipment = res.data;
+            this.totalItems = Number(res.headers['x-total-count']);
+            this.queryCount = this.totalItems;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+            this.alertService().showHttpError(this, err.response);
+          }
+        );
     }
   }
 

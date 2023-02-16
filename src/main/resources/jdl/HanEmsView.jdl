@@ -8,6 +8,16 @@ entity ItemView {
 	canNot String,
 }
 
+@readOnly
+entity EqReturnView {
+	id Long,
+	idno String,
+	name String,
+	itemId Long,
+	statusId Long,
+	personId Long,
+}
+
 filter *
 dto * with mapstruct
 paginate * with pagination

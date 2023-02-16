@@ -1,0 +1,20 @@
+{
+  "hanEmsApp": {
+    "eqReturnView": {
+      "home": {
+        "title": "Eq Return Views",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Eq Return Views found"
+      },
+      "detail": {
+        "title": "Eq Return View"
+      },
+      "id": "Id",
+      "idno": "Idno",
+      "name": "Name",
+      "itemId": "Item Id",
+      "statusId": "Status Id",
+      "personId": "Person Id"
+    }
+  }
+}

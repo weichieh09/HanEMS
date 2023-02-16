@@ -15,6 +15,7 @@
         "lendReturnRecord": "Lend Return Record",
         "blackList": "Black List",
         "itemView": "Item View",
+        "eqReturnView": "Eq Return View",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
