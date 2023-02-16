@@ -87,13 +87,7 @@
                     <span class="d-none d-md-inline">開始</span>
                   </button>
                 </router-link>
-                <b-button
-                  v-on:click="prepareRemove(person)"
-                  variant="danger"
-                  class="btn btn"
-                  data-cy="entityDeleteButton"
-                  v-b-modal.removeEntity
-                >
+                <b-button v-on:click="reject(person.id)" variant="danger" class="btn btn" data-cy="entityDeleteButton">
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline">拒絕</span>
                 </b-button>

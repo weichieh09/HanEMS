@@ -93,26 +93,29 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
   }
 
   public retrieveAllEquipments(): void {
-    this.isFetching = true;
-    const paginationQuery = {
-      page: this.page - 1,
-      size: this.itemsPerPage,
-      sort: this.sort(),
-    };
-    this.equipmentService()
-      .retrieve(paginationQuery)
-      .then(
-        res => {
-          this.equipment = res.data;
-          this.totalItems = Number(res.headers['x-total-count']);
-          this.queryCount = this.totalItems;
-          this.isFetching = false;
-        },
-        err => {
-          this.isFetching = false;
-          this.alertService().showHttpError(this, err.response);
-        }
-      );
+    if (this.personPending == 1) {
+      this.isFetching = true;
+      const paginationQuery = {
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort(),
+      };
+      this.equipmentService()
+        .retrieve(paginationQuery)
+        .then(
+          res => {
+            this.equipment = res.data;
+            this.totalItems = Number(res.headers['x-total-count']);
+            this.queryCount = this.totalItems;
+            this.isFetching = false;
+          },
+          err => {
+            this.isFetching = false;
+            this.alertService().showHttpError(this, err.response);
+          }
+        );
+    } else {
+    }
   }
 
   public handleSyncList(): void {

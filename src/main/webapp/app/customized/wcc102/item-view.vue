@@ -30,15 +30,15 @@
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'total'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('ready')">
-              <span>可出借</span>
+              <span>可借出</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'ready'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('working')">
-              <span>出借中</span>
+              <span>借出中</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'working'"></jhi-sort-indicator>
             </th>
             <th scope="row" v-on:click="changeOrder('canNot')">
-              <span>不可出借</span>
+              <span>不可借出</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'canNot'"></jhi-sort-indicator>
             </th>
             <!-- <th scope="row"><span>操作</span></th> -->

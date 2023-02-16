@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="EquipmentHeading">
-      <span id="equipment-heading">{{ personPending == 1 ? '[出借]' : '[歸還]' }} 設備</span>
+      <span id="equipment-heading">{{ personPending == 1 ? '[借出]' : '[歸還]' }} 設備</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-primary mr-2" v-on:click="finish" :disabled="isFetching">
           <font-awesome-icon icon="save" :spin="isFetching"></font-awesome-icon>
@@ -102,7 +102,7 @@
                   data-cy="entityEditButton"
                 >
                   <font-awesome-icon icon="chevron-circle-left"></font-awesome-icon>
-                  <span class="d-none d-md-inline">出借</span>
+                  <span class="d-none d-md-inline">借出</span>
                 </button>
                 <button
                   @click="returnEq(equipment.id)"

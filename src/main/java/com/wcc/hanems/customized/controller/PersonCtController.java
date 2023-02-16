@@ -94,7 +94,7 @@ public class PersonCtController {
         }
 
         PersonDTO personDTO = personService.findOne(reqDTO.getId()).get();
-        personDTO.setPending(0);
+        personDTO.setPending(reqDTO.getPending());
         personDTO.setModifyDate(Instant.now());
 
         PersonDTO result = personService.update(personDTO);

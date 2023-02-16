@@ -1,6 +1,6 @@
 import { Component, Vue, Inject, Provide } from 'vue-property-decorator';
 import Vue2Filters from 'vue2-filters';
-import { IPerson } from '@/shared/model/person.model';
+import { IPerson, Person } from '@/shared/model/person.model';
 
 import PersonService from './person.service';
 import AlertService from '@/shared/alert/alert.service';
@@ -8,7 +8,7 @@ import AlertService from '@/shared/alert/alert.service';
 @Component({
   mixins: [Vue2Filters.mixin],
 })
-export default class Person extends Vue {
+export default class MyPerson extends Vue {
   @Provide('personService') private personService = () => new PersonService();
   @Inject('alertService') private alertService: () => AlertService;
 
@@ -23,6 +23,7 @@ export default class Person extends Vue {
   private timerRefresh = null;
 
   public people: IPerson[] = [];
+  public person: IPerson[] = [];
 
   public isFetching = false;
 
@@ -128,5 +129,58 @@ export default class Person extends Vue {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public reject(personId): void {
+    var person = new Person();
+    person.id = personId;
+    person.name = '';
+    person.pending = 0;
+    this.person = person;
+    this.savePerson();
+  }
+
+  public savePerson(): void {
+    this.isSaving = true;
+    if (this.person.id) {
+      this.personService()
+        .update(this.person)
+        .then(param => {
+          this.isSaving = false;
+          // this.$router.go(-1);
+          this.clear();
+          const message = this.$t('操作成功!');
+          return (this.$root as any).$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Success',
+            variant: 'success',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
+        });
+    } else {
+      this.personService()
+        .create(this.person)
+        .then(param => {
+          this.isSaving = false;
+          this.$router.go(-1);
+          const message = this.$t('借用登記成功，識別碼為 ' + param.id + ' ');
+          (this.$root as any).$bvToast.toast(message.toString(), {
+            toaster: 'b-toaster-top-center',
+            title: 'Success',
+            variant: 'success',
+            solid: true,
+            autoHideDelay: 5000,
+          });
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService().showHttpError(this, error.response);
+        });
+    }
   }
 }
