@@ -99,11 +99,20 @@ public class EqReturnViewQueryService extends QueryService<EqReturnView> {
             if (criteria.getItemId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getItemId(), EqReturnView_.itemId));
             }
+            if (criteria.getItemName() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getItemName(), EqReturnView_.itemName));
+            }
             if (criteria.getStatusId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getStatusId(), EqReturnView_.statusId));
             }
+            if (criteria.getStatusName() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getStatusName(), EqReturnView_.statusName));
+            }
             if (criteria.getPersonId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getPersonId(), EqReturnView_.personId));
+            }
+            if (criteria.getPersonName() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getPersonName(), EqReturnView_.personName));
             }
         }
         return specification;

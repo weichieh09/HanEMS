@@ -14,8 +14,11 @@ entity EqReturnView {
 	idno String,
 	name String,
 	itemId Long,
+	itemName String,
 	statusId Long,
+	statusName String,
 	personId Long,
+	personName String,
 }
 
 filter *

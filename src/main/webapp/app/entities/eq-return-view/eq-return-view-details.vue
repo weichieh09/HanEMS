@@ -25,16 +25,34 @@
             <span>{{ eqReturnView.itemId }}</span>
           </dd>
           <dt>
+            <span v-text="$t('hanEmsApp.eqReturnView.itemName')">Item Name</span>
+          </dt>
+          <dd>
+            <span>{{ eqReturnView.itemName }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('hanEmsApp.eqReturnView.statusId')">Status Id</span>
           </dt>
           <dd>
             <span>{{ eqReturnView.statusId }}</span>
           </dd>
           <dt>
+            <span v-text="$t('hanEmsApp.eqReturnView.statusName')">Status Name</span>
+          </dt>
+          <dd>
+            <span>{{ eqReturnView.statusName }}</span>
+          </dd>
+          <dt>
             <span v-text="$t('hanEmsApp.eqReturnView.personId')">Person Id</span>
           </dt>
           <dd>
             <span>{{ eqReturnView.personId }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('hanEmsApp.eqReturnView.personName')">Person Name</span>
+          </dt>
+          <dd>
+            <span>{{ eqReturnView.personName }}</span>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

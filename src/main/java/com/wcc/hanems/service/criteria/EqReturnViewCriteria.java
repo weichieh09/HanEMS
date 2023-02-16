@@ -29,9 +29,15 @@ public class EqReturnViewCriteria implements Serializable, Criteria {
 
     private LongFilter itemId;
 
+    private StringFilter itemName;
+
     private LongFilter statusId;
 
+    private StringFilter statusName;
+
     private LongFilter personId;
+
+    private StringFilter personName;
 
     private Boolean distinct;
 
@@ -42,8 +48,11 @@ public class EqReturnViewCriteria implements Serializable, Criteria {
         this.idno = other.idno == null ? null : other.idno.copy();
         this.name = other.name == null ? null : other.name.copy();
         this.itemId = other.itemId == null ? null : other.itemId.copy();
+        this.itemName = other.itemName == null ? null : other.itemName.copy();
         this.statusId = other.statusId == null ? null : other.statusId.copy();
+        this.statusName = other.statusName == null ? null : other.statusName.copy();
         this.personId = other.personId == null ? null : other.personId.copy();
+        this.personName = other.personName == null ? null : other.personName.copy();
         this.distinct = other.distinct;
     }
 
@@ -112,6 +121,21 @@ public class EqReturnViewCriteria implements Serializable, Criteria {
         this.itemId = itemId;
     }
 
+    public StringFilter getItemName() {
+        return itemName;
+    }
+
+    public StringFilter itemName() {
+        if (itemName == null) {
+            itemName = new StringFilter();
+        }
+        return itemName;
+    }
+
+    public void setItemName(StringFilter itemName) {
+        this.itemName = itemName;
+    }
+
     public LongFilter getStatusId() {
         return statusId;
     }
@@ -127,6 +151,21 @@ public class EqReturnViewCriteria implements Serializable, Criteria {
         this.statusId = statusId;
     }
 
+    public StringFilter getStatusName() {
+        return statusName;
+    }
+
+    public StringFilter statusName() {
+        if (statusName == null) {
+            statusName = new StringFilter();
+        }
+        return statusName;
+    }
+
+    public void setStatusName(StringFilter statusName) {
+        this.statusName = statusName;
+    }
+
     public LongFilter getPersonId() {
         return personId;
     }
@@ -140,6 +179,21 @@ public class EqReturnViewCriteria implements Serializable, Criteria {
 
     public void setPersonId(LongFilter personId) {
         this.personId = personId;
+    }
+
+    public StringFilter getPersonName() {
+        return personName;
+    }
+
+    public StringFilter personName() {
+        if (personName == null) {
+            personName = new StringFilter();
+        }
+        return personName;
+    }
+
+    public void setPersonName(StringFilter personName) {
+        this.personName = personName;
     }
 
     public Boolean getDistinct() {
@@ -164,15 +218,18 @@ public class EqReturnViewCriteria implements Serializable, Criteria {
             Objects.equals(idno, that.idno) &&
             Objects.equals(name, that.name) &&
             Objects.equals(itemId, that.itemId) &&
+            Objects.equals(itemName, that.itemName) &&
             Objects.equals(statusId, that.statusId) &&
+            Objects.equals(statusName, that.statusName) &&
             Objects.equals(personId, that.personId) &&
+            Objects.equals(personName, that.personName) &&
             Objects.equals(distinct, that.distinct)
         );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idno, name, itemId, statusId, personId, distinct);
+        return Objects.hash(id, idno, name, itemId, itemName, statusId, statusName, personId, personName, distinct);
     }
 
     // prettier-ignore
@@ -183,8 +240,11 @@ public class EqReturnViewCriteria implements Serializable, Criteria {
             (idno != null ? "idno=" + idno + ", " : "") +
             (name != null ? "name=" + name + ", " : "") +
             (itemId != null ? "itemId=" + itemId + ", " : "") +
+            (itemName != null ? "itemName=" + itemName + ", " : "") +
             (statusId != null ? "statusId=" + statusId + ", " : "") +
+            (statusName != null ? "statusName=" + statusName + ", " : "") +
             (personId != null ? "personId=" + personId + ", " : "") +
+            (personName != null ? "personName=" + personName + ", " : "") +
             (distinct != null ? "distinct=" + distinct + ", " : "") +
             "}";
     }

@@ -22,12 +22,24 @@
       "fieldType": "Long"
     },
     {
+      "fieldName": "itemName",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "statusId",
       "fieldType": "Long"
     },
     {
+      "fieldName": "statusName",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "personId",
       "fieldType": "Long"
+    },
+    {
+      "fieldName": "personName",
+      "fieldType": "String"
     }
   ],
   "fluentMethods": true,

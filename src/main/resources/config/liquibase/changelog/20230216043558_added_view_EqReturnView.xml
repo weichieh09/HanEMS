@@ -13,10 +13,12 @@
         <createView
             replaceIfExists="true"
             viewName="eq_return_view">
-            SELECT e.id AS id, e.idno AS idno, e.name AS name, e.item_id AS item_id, e.status_id AS status_id, p.id AS person_id
+            SELECT e.id AS id, e.idno AS idno, e.name AS name, e.item_id AS item_id, i.name AS item_name, e.status_id AS status_id, s.name AS status_name, p.id AS person_id, p.name AS person_name
             FROM equipment e
             INNER JOIN lend_return_record lrr ON e.id = lrr.equipment_id
             INNER JOIN person p ON lrr.person_id = p.id
+            INNER JOIN item i ON e.item_id = i.id
+            INNER JOIN status s ON e.status_id = s.id
             WHERE e.status_id = 2 AND lrr.return_date IS NULL;
         </createView>
     </changeSet>

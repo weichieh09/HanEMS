@@ -17,9 +17,15 @@ public class EqReturnViewDTO implements Serializable {
 
     private Long itemId;
 
+    private String itemName;
+
     private Long statusId;
 
+    private String statusName;
+
     private Long personId;
+
+    private String personName;
 
     public Long getId() {
         return id;
@@ -53,6 +59,14 @@ public class EqReturnViewDTO implements Serializable {
         this.itemId = itemId;
     }
 
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
     public Long getStatusId() {
         return statusId;
     }
@@ -61,12 +75,28 @@ public class EqReturnViewDTO implements Serializable {
         this.statusId = statusId;
     }
 
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
+
     public Long getPersonId() {
         return personId;
     }
 
     public void setPersonId(Long personId) {
         this.personId = personId;
+    }
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
     }
 
     @Override
@@ -98,8 +128,11 @@ public class EqReturnViewDTO implements Serializable {
             ", idno='" + getIdno() + "'" +
             ", name='" + getName() + "'" +
             ", itemId=" + getItemId() +
+            ", itemName='" + getItemName() + "'" +
             ", statusId=" + getStatusId() +
+            ", statusName='" + getStatusName() + "'" +
             ", personId=" + getPersonId() +
+            ", personName='" + getPersonName() + "'" +
             "}";
     }
 }

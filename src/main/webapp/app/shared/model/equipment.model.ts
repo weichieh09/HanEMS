@@ -10,6 +10,10 @@ export interface IEquipment {
   modifyDate?: Date | null;
   item?: IItem | null;
   status?: IStatus | null;
+  itemId?: number;
+  itemName?: string;
+  statusId?: number;
+  statusName?: string;
 }
 
 export class Equipment implements IEquipment {
@@ -21,6 +25,10 @@ export class Equipment implements IEquipment {
     public createDate?: Date | null,
     public modifyDate?: Date | null,
     public item?: IItem | null,
-    public status?: IStatus | null
+    public status?: IStatus | null,
+    public itemId?: number,
+    public itemName?: string,
+    public statusId?: number,
+    public statusName?: string
   ) {}
 }

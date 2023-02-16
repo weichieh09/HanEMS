@@ -33,13 +33,25 @@
               <span v-text="$t('hanEmsApp.eqReturnView.itemId')">Item Id</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'itemId'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('itemName')">
+              <span v-text="$t('hanEmsApp.eqReturnView.itemName')">Item Name</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'itemName'"></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('statusId')">
               <span v-text="$t('hanEmsApp.eqReturnView.statusId')">Status Id</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'statusId'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('statusName')">
+              <span v-text="$t('hanEmsApp.eqReturnView.statusName')">Status Name</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'statusName'"></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('personId')">
               <span v-text="$t('hanEmsApp.eqReturnView.personId')">Person Id</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'personId'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('personName')">
+              <span v-text="$t('hanEmsApp.eqReturnView.personName')">Person Name</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'personName'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
@@ -54,8 +66,11 @@
             <td>{{ eqReturnView.idno }}</td>
             <td>{{ eqReturnView.name }}</td>
             <td>{{ eqReturnView.itemId }}</td>
+            <td>{{ eqReturnView.itemName }}</td>
             <td>{{ eqReturnView.statusId }}</td>
+            <td>{{ eqReturnView.statusName }}</td>
             <td>{{ eqReturnView.personId }}</td>
+            <td>{{ eqReturnView.personName }}</td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'EqReturnViewView', params: { eqReturnViewId: eqReturnView.id } }" custom v-slot="{ navigate }">

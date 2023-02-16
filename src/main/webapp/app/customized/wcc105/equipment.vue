@@ -72,11 +72,8 @@
             <td>{{ equipment.id }}</td>
             <td>{{ equipment.idno }}</td>
             <td>{{ equipment.name }}</td>
-            <!-- <td>{{ equipment.description }}</td>
-            <td>{{ equipment.createDate ? $d(Date.parse(equipment.createDate), 'short') : '' }}</td>
-            <td>{{ equipment.modifyDate ? $d(Date.parse(equipment.modifyDate), 'short') : '' }}</td> -->
-            <td>{{ equipment.item.name }}</td>
-            <td>
+            <td>{{ personPending != -1 ? equipment.item.name : equipment.itemName }}</td>
+            <td v-if="personPending != -1">
               <div v-if="equipment.status.id == 1">
                 <span style="background-color: springgreen; color: green">{{ equipment.status.name }}</span>
               </div>
@@ -87,14 +84,19 @@
                 <span style="background-color: darkgrey; color: black">{{ equipment.status.name }}</span>
               </div>
             </td>
+            <td v-else>
+              <div v-if="equipment.statusId == 1">
+                <span style="background-color: springgreen; color: green">{{ equipment.statusName }}</span>
+              </div>
+              <div v-if="equipment.statusId == 2">
+                <span style="background-color: pink; color: red">{{ equipment.statusName }}</span>
+              </div>
+              <div v-if="equipment.statusId == 3">
+                <span style="background-color: darkgrey; color: black">{{ equipment.statusName }}</span>
+              </div>
+            </td>
             <td class="text-right">
-              <div class="btn-group">
-                <!-- <router-link :to="{ name: 'EquipmentView', params: { equipmentId: equipment.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
-                    <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
-                  </button>
-                </router-link> -->
+              <div class="btn-group" v-if="personPending != -1">
                 <button
                   @click="rentEq(equipment.id)"
                   :disabled="equipment.status.id != 1 || equipment.status.id == 3"
@@ -113,16 +115,26 @@
                   <span class="d-none d-md-inline">歸還</span>
                   <font-awesome-icon icon="chevron-circle-right"></font-awesome-icon>
                 </button>
-                <!-- <b-button
-                  v-on:click="prepareRemove(equipment)"
-                  variant="danger"
-                  class="btn btn-sm"
-                  data-cy="entityDeleteButton"
-                  v-b-modal.removeEntity
+              </div>
+              <div class="btn-group" v-else>
+                <button
+                  @click="rentEq(equipment.id)"
+                  :disabled="equipment.statusId != 1 || equipment.statusId == 3"
+                  class="btn btn-outline-primary btn edit"
+                  data-cy="entityEditButton"
                 >
-                  <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
-                </b-button> -->
+                  <font-awesome-icon icon="chevron-circle-left"></font-awesome-icon>
+                  <span class="d-none d-md-inline">借出</span>
+                </button>
+                <button
+                  @click="returnEq(equipment.id)"
+                  :disabled="equipment.statusId != 2 || equipment.statusId == 3"
+                  class="btn btn-outline-primary btn edit"
+                  data-cy="entityEditButton"
+                >
+                  <span class="d-none d-md-inline">歸還</span>
+                  <font-awesome-icon icon="chevron-circle-right"></font-awesome-icon>
+                </button>
               </div>
             </td>
           </tr>

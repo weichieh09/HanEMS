@@ -13,8 +13,11 @@
       "idno": "Idno",
       "name": "Name",
       "itemId": "Item Id",
+      "itemName": "Item Name",
       "statusId": "Status Id",
-      "personId": "Person Id"
+      "statusName": "Status Name",
+      "personId": "Person Id",
+      "personName": "Person Name"
     }
   }
 }

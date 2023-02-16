@@ -27,11 +27,20 @@ public class EqReturnView implements Serializable {
     @Column(name = "item_id")
     private Long itemId;
 
+    @Column(name = "item_name")
+    private String itemName;
+
     @Column(name = "status_id")
     private Long statusId;
 
+    @Column(name = "status_name")
+    private String statusName;
+
     @Column(name = "person_id")
     private Long personId;
+
+    @Column(name = "person_name")
+    private String personName;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -87,6 +96,19 @@ public class EqReturnView implements Serializable {
         this.itemId = itemId;
     }
 
+    public String getItemName() {
+        return this.itemName;
+    }
+
+    public EqReturnView itemName(String itemName) {
+        this.setItemName(itemName);
+        return this;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
     public Long getStatusId() {
         return this.statusId;
     }
@@ -100,6 +122,19 @@ public class EqReturnView implements Serializable {
         this.statusId = statusId;
     }
 
+    public String getStatusName() {
+        return this.statusName;
+    }
+
+    public EqReturnView statusName(String statusName) {
+        this.setStatusName(statusName);
+        return this;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
+
     public Long getPersonId() {
         return this.personId;
     }
@@ -111,6 +146,19 @@ public class EqReturnView implements Serializable {
 
     public void setPersonId(Long personId) {
         this.personId = personId;
+    }
+
+    public String getPersonName() {
+        return this.personName;
+    }
+
+    public EqReturnView personName(String personName) {
+        this.setPersonName(personName);
+        return this;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -140,8 +188,11 @@ public class EqReturnView implements Serializable {
             ", idno='" + getIdno() + "'" +
             ", name='" + getName() + "'" +
             ", itemId=" + getItemId() +
+            ", itemName='" + getItemName() + "'" +
             ", statusId=" + getStatusId() +
+            ", statusName='" + getStatusName() + "'" +
             ", personId=" + getPersonId() +
+            ", personName='" + getPersonName() + "'" +
             "}";
     }
 }
