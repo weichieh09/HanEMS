@@ -5,8 +5,9 @@ const Wcc103Component = () => import('@/customized/wcc103/person-update.vue');
 const Wcc104Component = () => import('@/customized/wcc104/person-update.vue');
 const Wcc105Component = () => import('@/customized/wcc105/person.vue');
 const Wcc105Edit = () => import('@/customized/wcc105/equipment.vue');
-// const Wcc105Details = () => import('@/customized/wcc105/wcc105Details.vue');
-// const Wcc106Component = () => import('@/customized/wcc106/wcc106.vue');
+const BlackList = () => import('@/customized/wcc106/black-list.vue');
+const BlackListUpdate = () => import('@/customized/wcc106/black-list-update.vue');
+const BlackListDetails = () => import('@/customized/wcc106/black-list-details.vue');
 // const Wcc106Update = () => import('@/customized/wcc106/wcc106Update.vue');
 // const Wcc106Details = () => import('@/customized/wcc106/wcc106Details.vue');
 
@@ -30,26 +31,38 @@ export default [
     path: '/wcc105',
     name: 'Wcc105',
     component: Wcc105Component,
-    meta: { authorities: [Authority.USER] },
+    meta: { authorities: [Authority.ADMIN] },
   },
   {
     path: '/wcc105/:personId/:personPending/edit',
     name: 'Wcc105Edit',
     component: Wcc105Edit,
+    meta: { authorities: [Authority.ADMIN] },
+  },
+  {
+    path: '/wcc106',
+    name: 'Wcc106',
+    component: BlackList,
     meta: { authorities: [Authority.USER] },
   },
-  // {
-  //   path: '/wcc105/:eqItemId/view',
-  //   name: 'Wcc105View',
-  //   component: Wcc105Details,
-  //   meta: { authorities: [Authority.USER] },
-  // },
-  // {
-  //   path: '/wcc106',
-  //   name: 'Wcc106',
-  //   component: Wcc106Component,
-  //   meta: { authorities: [Authority.USER] },
-  // },
+  {
+    path: '/wcc106/new',
+    name: 'Wcc106Create',
+    component: BlackListUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc106/:blackListId/edit',
+    name: 'Wcc106Edit',
+    component: BlackListUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc106/:blackListId/view',
+    name: 'Wcc106View',
+    component: BlackListDetails,
+    meta: { authorities: [Authority.USER] },
+  },
   // {
   //   path: '/wcc106/new',
   //   name: 'Wcc106Create',

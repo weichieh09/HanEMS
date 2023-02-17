@@ -17,5 +17,6 @@ public interface BlackListMapper extends EntityMapper<BlackListDTO, BlackList> {
     @Named("personId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
     PersonDTO toDtoPersonId(Person person);
 }

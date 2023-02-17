@@ -62,6 +62,10 @@ public class PersonCtController {
         //        查有無存在
         PersonDTO personDTO = personCtService.findIsExist(reqDTO.getName());
         if (personDTO != null) {
+            Boolean isBlack = personCtService.isBlack(personDTO);
+            if (isBlack) {
+                return ResponseEntity.ok().body(personDTO);
+            }
             reqDTO.setId(personDTO.getId());
             reqDTO.setCreateDate(personDTO.getCreateDate());
         } else {
