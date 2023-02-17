@@ -18,25 +18,48 @@
 
     <b-collapse is-nav id="header-tabs">
       <b-navbar-nav class="ml-auto">
-        <!-- <b-nav-item to="/" exact>
+        <b-nav-item to="/" exact>
           <span>
             <font-awesome-icon icon="home" />
             <span v-text="$t('global.menu.home')">Home</span>
           </span>
-        </b-nav-item> -->
+        </b-nav-item>
         <b-nav-item to="/wcc105" v-if="authenticated">
           <span>
             <font-awesome-icon icon="book" />
             <span>申請單</span>
           </span>
         </b-nav-item>
+        <b-nav-item to="/" v-if="authenticated">
+          <span>
+            <font-awesome-icon icon="tasks" />
+            <span>紀錄</span>
+          </span>
+        </b-nav-item>
+        <b-nav-item-dropdown right v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
+          <span slot="button-content" class="navbar-dropdown-menu">
+            <font-awesome-icon icon="th-list" />
+            <span class="no-bold">管理</span>
+          </span>
+          <b-dropdown-item to="/">
+            <font-awesome-icon icon="asterisk" />
+            <span>類別管理</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/">
+            <font-awesome-icon icon="asterisk" />
+            <span>設備管理</span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/wcc106">
+            <font-awesome-icon icon="asterisk" />
+            <span>黑名單管理</span>
+          </b-dropdown-item>
+        </b-nav-item-dropdown>
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />
             <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span>
           </span>
           <entities-menu></entities-menu>
-          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
         <b-nav-item-dropdown
           right
@@ -48,8 +71,8 @@
           data-cy="adminMenu"
         >
           <span slot="button-content" class="navbar-dropdown-menu">
-            <font-awesome-icon icon="users-cog" />
-            <span class="no-bold" v-text="$t('global.menu.admin.main')">Administration</span>
+            <font-awesome-icon icon="flag" />
+            <span class="no-bold">系統</span>
           </span>
           <b-dropdown-item to="/admin/user-management" active-class="active">
             <font-awesome-icon icon="users" />
@@ -101,7 +124,7 @@
         >
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="user" />
-            <span class="no-bold" v-text="$t('global.menu.account.main')"> Account </span>
+            <span class="no-bold">管理員</span>
           </span>
           <b-dropdown-item data-cy="settings" to="/account/settings" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="wrench" />
