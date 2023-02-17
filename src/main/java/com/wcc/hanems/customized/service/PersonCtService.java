@@ -44,7 +44,7 @@ public class PersonCtService {
             Instant blaclEndDate = null;
             Instant now = Instant.now();
             if (pending == -2) {
-                blaclEndDate = modifyDate.plus(1, ChronoUnit.MINUTES);
+                blaclEndDate = modifyDate.plus(29, ChronoUnit.DAYS);
                 return now.isBefore(blaclEndDate);
             }
             if (pending == -3) {
