@@ -26,7 +26,7 @@
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && equipment && equipment.length === 0">
-      <span>沒有設備資料</span>
+      <span>沒有設備要歸還或借出</span>
     </div>
     <div class="table-responsive" v-if="equipment && equipment.length > 0">
       <table class="table table-striped" aria-describedby="equipment">

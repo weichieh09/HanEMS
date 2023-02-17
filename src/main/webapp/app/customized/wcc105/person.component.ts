@@ -5,6 +5,8 @@ import { IPerson, Person } from '@/shared/model/person.model';
 import PersonService from './person.service';
 import AlertService from '@/shared/alert/alert.service';
 
+import moment from 'moment';
+
 @Component({
   mixins: [Vue2Filters.mixin],
 })
@@ -27,6 +29,8 @@ export default class MyPerson extends Vue {
 
   public isFetching = false;
 
+  public nowDate = null;
+
   // 跳轉到其他頁關閉 timer
   public beforeDestroy(): void {
     clearInterval(this.timerRefresh);
@@ -48,6 +52,7 @@ export default class MyPerson extends Vue {
   }
 
   public retrieveAllPersons(): void {
+    this.nowDate = moment(new Date()).format('yyyy-MM-DD hh:mm:ss');
     this.isFetching = true;
     const paginationQuery = {
       page: this.page - 1,

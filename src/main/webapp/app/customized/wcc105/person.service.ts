@@ -23,7 +23,7 @@ export default class PersonService {
   public retrieve(paginationQuery?: any): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
-        .get(baseApiUrl + '?pending.notEquals=0&' + `${buildPaginationQueryOpts(paginationQuery)}`)
+        .get(baseApiUrl + '?pending.in=1&pending.in=-1&' + `${buildPaginationQueryOpts(paginationQuery)}`)
         .then(res => {
           resolve(res);
         })

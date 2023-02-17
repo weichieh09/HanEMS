@@ -87,14 +87,25 @@ export default class PersonUpdate extends Vue {
         .then(param => {
           this.isSaving = false;
           this.$router.go(-1);
-          const message = this.$t('借用登記成功，識別碼為 ' + param.id + ' ');
-          (this.$root as any).$bvToast.toast(message.toString(), {
-            toaster: 'b-toaster-top-center',
-            title: 'Success',
-            variant: 'success',
-            solid: true,
-            autoHideDelay: 5000,
-          });
+          if (param.pending >= -1) {
+            const message = this.$t('借用登記成功，識別碼為 ' + param.id + ' ');
+            (this.$root as any).$bvToast.toast(message.toString(), {
+              toaster: 'b-toaster-top-center',
+              title: 'Success',
+              variant: 'success',
+              solid: true,
+              autoHideDelay: 5000,
+            });
+          } else {
+            const message = this.$t('已被列入黑名單，當前違規 ' + param.pending * -1 + ' 次');
+            (this.$root as any).$bvToast.toast(message.toString(), {
+              toaster: 'b-toaster-top-center',
+              title: 'Error',
+              variant: 'danger',
+              solid: true,
+              autoHideDelay: 5000,
+            });
+          }
         })
         .catch(error => {
           this.isSaving = false;

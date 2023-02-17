@@ -4,7 +4,7 @@
       <br /><br /><br />
       <b-row>
         <b-col md="12">
-          <h1 align="center">2023/2/6 22:17</h1>
+          <h1 align="center">{{ nowDate }}</h1>
           <br />
         </b-col>
         <b-col md="4">
