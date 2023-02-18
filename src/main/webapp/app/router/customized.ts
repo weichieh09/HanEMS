@@ -14,9 +14,9 @@ const ItemDetails = () => import('@/customized/wcc107/item-details.vue');
 const Equipment = () => import('@/customized/wcc108/equipment.vue');
 const EquipmentUpdate = () => import('@/customized/wcc108/equipment-update.vue');
 const EquipmentDetails = () => import('@/customized/wcc108/equipment-details.vue');
-// const Wcc106Update = () => import('@/customized/wcc106/wcc106Update.vue');
-// const Wcc106Details = () => import('@/customized/wcc106/wcc106Details.vue');
-
+const LendReturnRecord = () => import('@/customized/wcc109/lend-return-record.vue');
+const LendReturnRecordUpdate = () => import('@/customized/wcc109/lend-return-record-update.vue');
+const LendReturnRecordDetails = () => import('@/customized/wcc109/lend-return-record-details.vue');
 export default [
   {
     path: '/wcc102',
@@ -115,6 +115,30 @@ export default [
     path: '/wcc108/:equipmentId/view',
     name: 'Wcc108View',
     component: EquipmentDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc109',
+    name: 'Wcc109',
+    component: LendReturnRecord,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc109/new',
+    name: 'Wcc109Create',
+    component: LendReturnRecordUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc109/:lendReturnRecordId/edit',
+    name: 'Wcc109Edit',
+    component: LendReturnRecordUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc109/:lendReturnRecordId/view',
+    name: 'Wcc109View',
+    component: LendReturnRecordDetails,
     meta: { authorities: [Authority.USER] },
   },
 ];

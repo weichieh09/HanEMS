@@ -23,15 +23,18 @@ public interface LendReturnRecordMapper extends EntityMapper<LendReturnRecordDTO
     @Named("equipmentId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
     EquipmentDTO toDtoEquipmentId(Equipment equipment);
 
     @Named("personId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
     PersonDTO toDtoPersonId(Person person);
 
     @Named("reasonId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
     ReasonDTO toDtoReasonId(Reason reason);
 }
