@@ -20,6 +20,12 @@
         </router-link>
       </div>
     </h2>
+    <div style="float: right">
+      <small class="form-text text-danger">停用規則:</small>
+      <small class="form-text text-danger">黑單2次 = 停用1個月</small>
+      <small class="form-text text-danger">黑單3次 = 停用6個月</small>
+      <small class="form-text text-danger">黑單4次 = 永久停用</small>
+    </div>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && blackLists && blackLists.length === 0">
       <span>沒有黑名單資料</span>
@@ -33,21 +39,21 @@
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
             </th>
             <!-- <th scope="row" v-on:click="changeOrder('description')">
-              <span>描述</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
-            </th> -->
+                <span>描述</span>
+                <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
+              </th> -->
             <!-- <th scope="row" v-on:click="changeOrder('createDate')">
-              <span v-text="$t('hanEmsApp.blackList.createDate')">Create Date</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('modifyDate')">
-              <span v-text="$t('hanEmsApp.blackList.modifyDate')">Modify Date</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'modifyDate'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('person.id')">
-              <span v-text="$t('hanEmsApp.blackList.person')">Person</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.id'"></jhi-sort-indicator>
-            </th> -->
+                <span v-text="$t('hanEmsApp.blackList.createDate')">Create Date</span>
+                <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
+              </th>
+              <th scope="row" v-on:click="changeOrder('modifyDate')">
+                <span v-text="$t('hanEmsApp.blackList.modifyDate')">Modify Date</span>
+                <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'modifyDate'"></jhi-sort-indicator>
+              </th>
+              <th scope="row" v-on:click="changeOrder('person.id')">
+                <span v-text="$t('hanEmsApp.blackList.person')">Person</span>
+                <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.id'"></jhi-sort-indicator>
+              </th> -->
             <th scope="row" v-on:click="changeOrder('person.id')">
               <span>姓名</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.id'"></jhi-sort-indicator>
@@ -64,12 +70,12 @@
             <td>{{ blackList.id }}</td>
             <!-- <td>{{ blackList.description }}</td> -->
             <!-- <td>{{ blackList.createDate ? $d(Date.parse(blackList.createDate), 'short') : '' }}</td>
-            <td>{{ blackList.modifyDate ? $d(Date.parse(blackList.modifyDate), 'short') : '' }}</td>
-            <td>
-              <div v-if="blackList.person">
-                <router-link :to="{ name: 'PersonView', params: { personId: blackList.person.id } }">{{ blackList.person.id }}</router-link>
-              </div>
-            </td> -->
+              <td>{{ blackList.modifyDate ? $d(Date.parse(blackList.modifyDate), 'short') : '' }}</td>
+              <td>
+                <div v-if="blackList.person">
+                  <router-link :to="{ name: 'PersonView', params: { personId: blackList.person.id } }">{{ blackList.person.id }}</router-link>
+                </div>
+              </td> -->
             <td>{{ blackList.person.name }}</td>
             <td>{{ blackList.blackDate ? $d(Date.parse(blackList.blackDate), 'short') : '' }}</td>
             <td class="text-right">

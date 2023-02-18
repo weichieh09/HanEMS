@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="PersonHeading">
-      <span id="person-heading">申請單</span>
+      <span id="person-heading">[申請單]</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
