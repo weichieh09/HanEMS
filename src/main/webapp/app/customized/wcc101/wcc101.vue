@@ -1,8 +1,12 @@
 <template>
   <div>
     <b-container fluid>
-      <br /><br /><br />
+      <br />
       <b-row>
+        <b-col md="12">
+          <h4 v-if="authenticated">管理員，你好!</h4>
+          <h4 v-else>訪客，你好!</h4>
+        </b-col>
         <b-col md="12">
           <h1 align="center">{{ nowDate }}</h1>
           <br />
