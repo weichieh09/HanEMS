@@ -30,12 +30,16 @@
             <span>申請單</span>
           </span>
         </b-nav-item>
-        <b-nav-item to="/" v-if="authenticated">
-          <span>
+        <b-nav-item-dropdown right v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
+          <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="tasks" />
-            <span>紀錄</span>
+            <span class="no-bold">紀錄</span>
           </span>
-        </b-nav-item>
+          <b-dropdown-item to="/wcc109">
+            <font-awesome-icon icon="asterisk" />
+            <span>出借/歸還</span>
+          </b-dropdown-item>
+        </b-nav-item-dropdown>
         <b-nav-item-dropdown right v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />
@@ -43,15 +47,15 @@
           </span>
           <b-dropdown-item to="/wcc107">
             <font-awesome-icon icon="asterisk" />
-            <span>類別管理</span>
+            <span>類別</span>
           </b-dropdown-item>
           <b-dropdown-item to="/wcc108">
             <font-awesome-icon icon="asterisk" />
-            <span>設備管理</span>
+            <span>設備</span>
           </b-dropdown-item>
           <b-dropdown-item to="/wcc106">
             <font-awesome-icon icon="asterisk" />
-            <span>黑名單管理</span>
+            <span>黑名單</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
@@ -142,7 +146,7 @@
             <font-awesome-icon icon="sign-in-alt" />
             <span v-text="$t('global.menu.account.login')">Sign in</span>
           </b-dropdown-item>
-          <b-dropdown-item
+          <!-- <b-dropdown-item
             data-cy="register"
             to="/register"
             tag="b-dropdown-item"
@@ -152,7 +156,7 @@
           >
             <font-awesome-icon icon="user-plus" />
             <span v-text="$t('global.menu.account.register')">Register</span>
-          </b-dropdown-item>
+          </b-dropdown-item> -->
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
