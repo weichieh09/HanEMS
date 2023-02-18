@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <div v-if="blackList">
-        <h2 class="jh-entity-heading" data-cy="blackListDetailsHeading"><span>黑名單</span> {{ blackList.id }}</h2>
+        <h2 class="jh-entity-heading" data-cy="blackListDetailsHeading"><span>[檢視] 黑名單 </span> {{ blackList.id }}</h2>
         <dl class="row jh-entity-details">
           <dt>
             <span>姓名</span>
@@ -17,7 +17,7 @@
             <span v-if="blackList.blackDate">{{ $d(Date.parse(blackList.blackDate), 'long') }}</span>
           </dd>
           <dt>
-            <span>原因</span>
+            <span>描述</span>
           </dt>
           <dd>
             <span>{{ blackList.description }}</span>

@@ -8,6 +8,12 @@ const Wcc105Edit = () => import('@/customized/wcc105/equipment.vue');
 const BlackList = () => import('@/customized/wcc106/black-list.vue');
 const BlackListUpdate = () => import('@/customized/wcc106/black-list-update.vue');
 const BlackListDetails = () => import('@/customized/wcc106/black-list-details.vue');
+const Item = () => import('@/customized/wcc107/item.vue');
+const ItemUpdate = () => import('@/customized/wcc107/item-update.vue');
+const ItemDetails = () => import('@/customized/wcc107/item-details.vue');
+const Equipment = () => import('@/customized/wcc108/equipment.vue');
+const EquipmentUpdate = () => import('@/customized/wcc108/equipment-update.vue');
+const EquipmentDetails = () => import('@/customized/wcc108/equipment-details.vue');
 // const Wcc106Update = () => import('@/customized/wcc106/wcc106Update.vue');
 // const Wcc106Details = () => import('@/customized/wcc106/wcc106Details.vue');
 
@@ -63,22 +69,52 @@ export default [
     component: BlackListDetails,
     meta: { authorities: [Authority.USER] },
   },
-  // {
-  //   path: '/wcc106/new',
-  //   name: 'Wcc106Create',
-  //   component: Wcc106Update,
-  //   meta: { authorities: [Authority.USER] },
-  // },
-  // {
-  //   path: '/wcc106/:eqViewId/edit',
-  //   name: 'Wcc106Edit',
-  //   component: Wcc106Update,
-  //   meta: { authorities: [Authority.USER] },
-  // },
-  // {
-  //   path: '/wcc106/:eqViewId/view',
-  //   name: 'Wcc106View',
-  //   component: Wcc106Details,
-  //   meta: { authorities: [Authority.USER] },
-  // },
+  {
+    path: '/wcc107',
+    name: 'Wcc107',
+    component: Item,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc107/new',
+    name: 'Wcc107Create',
+    component: ItemUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc107/:itemId/edit',
+    name: 'Wcc107Edit',
+    component: ItemUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc107/:itemId/view',
+    name: 'Wcc107View',
+    component: ItemDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc108',
+    name: 'Wcc108',
+    component: Equipment,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc108/new',
+    name: 'Wcc108Create',
+    component: EquipmentUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc108/:equipmentId/edit',
+    name: 'Wcc108Edit',
+    component: EquipmentUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/wcc108/:equipmentId/view',
+    name: 'Wcc108View',
+    component: EquipmentDetails,
+    meta: { authorities: [Authority.USER] },
+  },
 ];

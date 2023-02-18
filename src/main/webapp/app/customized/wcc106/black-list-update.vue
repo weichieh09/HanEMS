@@ -2,7 +2,8 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="hanEmsApp.blackList.home.createOrEditLabel" data-cy="BlackListCreateUpdateHeading">新增/編輯</h2>
+        <h2 v-if="blackList.id" data-cy="BlackListCreateUpdateHeading">[編輯] 黑名單</h2>
+        <h2 v-else data-cy="BlackListCreateUpdateHeading">[新增] 黑名單</h2>
         <div>
           <div class="form-group" v-if="blackList.id">
             <label for="id">編號</label>
@@ -22,7 +23,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="black-list-description">原因</label>
+            <label class="form-control-label" for="black-list-description">描述</label>
             <textarea
               class="form-control"
               name="description"
@@ -48,9 +49,7 @@
               />
             </div>
             <div v-if="$v.blackList.blackDate.$anyDirty && $v.blackList.blackDate.$invalid">
-              <small class="form-text text-danger" v-if="!$v.blackList.blackDate.required" v-text="$t('entity.validation.required')">
-                This field is required.
-              </small>
+              <small class="form-text text-danger" v-if="!$v.blackList.blackDate.required"> 必填 </small>
               <small
                 class="form-text text-danger"
                 v-if="!$v.blackList.blackDate.ZonedDateTimelocal"

@@ -41,11 +41,11 @@
             <font-awesome-icon icon="th-list" />
             <span class="no-bold">管理</span>
           </span>
-          <b-dropdown-item to="/">
+          <b-dropdown-item to="/wcc107">
             <font-awesome-icon icon="asterisk" />
             <span>類別管理</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/">
+          <b-dropdown-item to="/wcc108">
             <font-awesome-icon icon="asterisk" />
             <span>設備管理</span>
           </b-dropdown-item>

@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h2 id="page-heading" data-cy="BlackListHeading">
-      <span id="black-list-heading">[管理] 黑名單</span>
+    <h2 id="page-heading" data-cy="EquipmentHeading">
+      <span id="equipment-heading">[管理] 設備</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span>更新</span>
         </button>
-        <router-link :to="{ name: 'Wcc106Create' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'Wcc108Create' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
             data-cy="entityCreateButton"
-            class="btn btn-primary jh-create-entity create-black-list"
+            class="btn btn-primary jh-create-entity create-equipment"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span>新增</span>
@@ -21,73 +21,89 @@
       </div>
     </h2>
     <br />
-    <div class="alert alert-warning" v-if="!isFetching && blackLists && blackLists.length === 0">
-      <span>沒有黑名單資料</span>
+    <div class="alert alert-warning" v-if="!isFetching && equipment && equipment.length === 0">
+      <span>沒有設備資料</span>
     </div>
-    <div class="table-responsive" v-if="blackLists && blackLists.length > 0">
-      <table class="table table-striped" aria-describedby="blackLists">
+    <div class="table-responsive" v-if="equipment && equipment.length > 0">
+      <table class="table table-striped" aria-describedby="equipment">
         <thead>
           <tr>
             <th scope="row" v-on:click="changeOrder('id')">
               <span>編號</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('idno')">
+              <span>設備序號</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'idno'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('name')">
+              <span>名稱</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
+            </th>
             <!-- <th scope="row" v-on:click="changeOrder('description')">
-              <span>描述</span>
+              <span v-text="$t('hanEmsApp.equipment.description')">Description</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
             </th> -->
             <!-- <th scope="row" v-on:click="changeOrder('createDate')">
-              <span v-text="$t('hanEmsApp.blackList.createDate')">Create Date</span>
+              <span v-text="$t('hanEmsApp.equipment.createDate')">Create Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('modifyDate')">
-              <span v-text="$t('hanEmsApp.blackList.modifyDate')">Modify Date</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'modifyDate'"></jhi-sort-indicator>
-            </th>
-            <th scope="row" v-on:click="changeOrder('person.id')">
-              <span v-text="$t('hanEmsApp.blackList.person')">Person</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.id'"></jhi-sort-indicator>
             </th> -->
-            <th scope="row" v-on:click="changeOrder('person.id')">
-              <span>姓名</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.id'"></jhi-sort-indicator>
+            <!-- <th scope="row" v-on:click="changeOrder('modifyDate')">
+              <span v-text="$t('hanEmsApp.equipment.modifyDate')">Modify Date</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'modifyDate'"></jhi-sort-indicator>
+            </th> -->
+            <th scope="row" v-on:click="changeOrder('item.id')">
+              <span>類別</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'item.id'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('blackDate')">
-              <span>違規日期</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'blackDate'"></jhi-sort-indicator>
+            <th scope="row" v-on:click="changeOrder('status.id')">
+              <span>狀態</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'status.id'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="blackList in blackLists" :key="blackList.id" data-cy="entityTable">
-            <td>{{ blackList.id }}</td>
-            <!-- <td>{{ blackList.description }}</td> -->
-            <!-- <td>{{ blackList.createDate ? $d(Date.parse(blackList.createDate), 'short') : '' }}</td>
-            <td>{{ blackList.modifyDate ? $d(Date.parse(blackList.modifyDate), 'short') : '' }}</td>
+          <tr v-for="equipment in equipment" :key="equipment.id" data-cy="entityTable">
+            <td>{{ equipment.id }}</td>
+            <td>{{ equipment.idno }}</td>
+            <td>{{ equipment.name }}</td>
+            <!-- <td>{{ equipment.description }}</td> -->
+            <!-- <td>{{ equipment.createDate ? $d(Date.parse(equipment.createDate), 'short') : '' }}</td> -->
+            <!-- <td>{{ equipment.modifyDate ? $d(Date.parse(equipment.modifyDate), 'short') : '' }}</td> -->
             <td>
-              <div v-if="blackList.person">
-                <router-link :to="{ name: 'PersonView', params: { personId: blackList.person.id } }">{{ blackList.person.id }}</router-link>
+              <div v-if="equipment.item">
+                {{ equipment.item.name }}
               </div>
-            </td> -->
-            <td>{{ blackList.person.name }}</td>
-            <td>{{ blackList.blackDate ? $d(Date.parse(blackList.blackDate), 'short') : '' }}</td>
+            </td>
+            <td>
+              <div v-if="equipment.status.id == 1">
+                <span style="background-color: springgreen; color: green">{{ equipment.status.name }}</span>
+              </div>
+              <div v-if="equipment.status.id == 2">
+                <span style="background-color: pink; color: red">{{ equipment.status.name }}</span>
+              </div>
+              <div v-if="equipment.status.id == 3">
+                <span style="background-color: darkgrey; color: black">{{ equipment.status.name }}</span>
+              </div>
+            </td>
+
             <td class="text-right">
               <div class="btn-group">
-                <router-link :to="{ name: 'Wcc106View', params: { blackListId: blackList.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'Wcc108View', params: { equipmentId: equipment.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'Wcc106Edit', params: { blackListId: blackList.id } }" custom v-slot="{ navigate }">
+                <router-link :to="{ name: 'Wcc108Edit', params: { equipmentId: equipment.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
                   </button>
                 </router-link>
                 <b-button
-                  v-on:click="prepareRemove(blackList)"
+                  v-on:click="prepareRemove(equipment)"
                   variant="danger"
                   class="btn btn-sm"
                   data-cy="entityDeleteButton"
@@ -104,13 +120,13 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="hanEmsApp.blackList.delete.question" data-cy="blackListDeleteDialogHeading" v-text="$t('entity.delete.title')"
+        ><span id="hanEmsApp.equipment.delete.question" data-cy="equipmentDeleteDialogHeading" v-text="$t('entity.delete.title')"
           >Confirm delete operation</span
         ></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-blackList-heading" v-text="$t('hanEmsApp.blackList.delete.question', { id: removeId })">
-          Are you sure you want to delete this Black List?
+        <p id="jhi-delete-equipment-heading" v-text="$t('hanEmsApp.equipment.delete.question', { id: removeId })">
+          Are you sure you want to delete this Equipment?
         </p>
       </div>
       <div slot="modal-footer">
@@ -118,16 +134,16 @@
         <button
           type="button"
           class="btn btn-primary"
-          id="jhi-confirm-delete-blackList"
+          id="jhi-confirm-delete-equipment"
           data-cy="entityConfirmDeleteButton"
           v-text="$t('entity.action.delete')"
-          v-on:click="removeBlackList()"
+          v-on:click="removeEquipment()"
         >
           Delete
         </button>
       </div>
     </b-modal>
-    <div v-show="blackLists && blackLists.length > 0">
+    <div v-show="equipment && equipment.length > 0">
       <div class="row justify-content-center">
         <jhi-item-count :page="page" :total="queryCount" :itemsPerPage="itemsPerPage"></jhi-item-count>
       </div>
@@ -138,4 +154,4 @@
   </div>
 </template>
 
-<script lang="ts" src="./black-list.component.ts"></script>
+<script lang="ts" src="./equipment.component.ts"></script>
