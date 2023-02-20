@@ -2,13 +2,13 @@ import axios from 'axios';
 
 import buildPaginationQueryOpts from '@/shared/sort/sorts';
 
-import { ILendReturnRecord } from '@/shared/model/lend-return-record.model';
+import { IItem } from '@/shared/model/item.model';
 
-const baseApiUrl = 'api/lend-return-records';
+const baseApiUrl = 'api/items';
 
-export default class LendReturnRecordService {
-  public find(id: number): Promise<ILendReturnRecord> {
-    return new Promise<ILendReturnRecord>((resolve, reject) => {
+export default class ItemService {
+  public find(id: number): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .get(`${baseApiUrl}/${id}`)
         .then(res => {
@@ -20,21 +20,10 @@ export default class LendReturnRecordService {
     });
   }
 
-  public retrieve(pIdno, pName, eName, rDate, paginationQuery?: any): Promise<any> {
+  public retrieve(paginationQuery?: any): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
-        .get(
-          'api/wcc105GetAll?' +
-            'personIdno.contains=' +
-            pIdno +
-            '&personName.contains=' +
-            pName +
-            '&equipmentName.contains=' +
-            eName +
-            '&returnDate.specified=' +
-            rDate +
-            `&${buildPaginationQueryOpts(paginationQuery)}`
-        )
+        .get(baseApiUrl + `?${buildPaginationQueryOpts(paginationQuery)}`)
         .then(res => {
           resolve(res);
         })
@@ -57,8 +46,8 @@ export default class LendReturnRecordService {
     });
   }
 
-  public create(entity: ILendReturnRecord): Promise<ILendReturnRecord> {
-    return new Promise<ILendReturnRecord>((resolve, reject) => {
+  public create(entity: IItem): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .post(`${baseApiUrl}`, entity)
         .then(res => {
@@ -70,8 +59,8 @@ export default class LendReturnRecordService {
     });
   }
 
-  public update(entity: ILendReturnRecord): Promise<ILendReturnRecord> {
-    return new Promise<ILendReturnRecord>((resolve, reject) => {
+  public update(entity: IItem): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .put(`${baseApiUrl}/${entity.id}`, entity)
         .then(res => {
@@ -83,8 +72,8 @@ export default class LendReturnRecordService {
     });
   }
 
-  public partialUpdate(entity: ILendReturnRecord): Promise<ILendReturnRecord> {
-    return new Promise<ILendReturnRecord>((resolve, reject) => {
+  public partialUpdate(entity: IItem): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .patch(`${baseApiUrl}/${entity.id}`, entity)
         .then(res => {

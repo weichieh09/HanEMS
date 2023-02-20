@@ -5,6 +5,7 @@ import { IEquipment, Equipment } from '@/shared/model/equipment.model';
 import { ILendReturnRecord, LendReturnRecord } from '@/shared/model/lend-return-record.model';
 import { IPerson, Person } from '@/shared/model/person.model';
 import { IEqReturnView, EqReturnView } from '@/shared/model/eq-return-view.model';
+import { IItem, Item } from '@/shared/model/item.model';
 
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
@@ -12,6 +13,7 @@ import EquipmentService from './equipment.service';
 import LendReturnRecordService from './lend-return-record.service';
 import PersonService from './person.service';
 import EqReturnViewService from './eq-return-view.service';
+import ItemService from './item.service';
 import AlertService from '@/shared/alert/alert.service';
 
 @Component({
@@ -22,6 +24,7 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
   @Provide('LendReturnRecordService') private lendReturnRecordService = () => new LendReturnRecordService();
   @Provide('personService') private personService = () => new PersonService();
   @Provide('eqReturnViewService') private eqReturnViewService = () => new EqReturnViewService();
+  @Provide('ItemService') private itemService = () => new ItemService();
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
@@ -35,9 +38,13 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
   public personId = null;
   public personPending = null;
 
+  public nameContains = '';
+  public itemIdEquals = 0;
+
   public equipment: IEquipment[] = [];
   public lendReturnRecord: ILendReturnRecord = new LendReturnRecord();
   public person: IPerson[] = [];
+  public items: IItem[] = [];
 
   public isFetching = false;
   public isSaving = false;
@@ -55,6 +62,7 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
 
   public mounted(): void {
     this.retrieveAllEquipments();
+    this.retrieveAllItems();
   }
 
   public clear(): void {
@@ -95,6 +103,21 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
     this.saveRecord('Return');
   }
 
+  public retrieveAllItems(): void {
+    this.isFetching = true;
+    this.itemService()
+      .retrieve()
+      .then(
+        res => {
+          this.items = res.data;
+        },
+        err => {
+          this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
+  }
+
   public retrieveAllEquipments(): void {
     if (this.personPending == 1) {
       this.isFetching = true;
@@ -103,8 +126,9 @@ export default class MyEquipment extends mixins(JhiDataUtils) {
         size: this.itemsPerPage,
         sort: this.sort(),
       };
+      console.log(paginationQuery);
       this.equipmentService()
-        .retrieve(paginationQuery)
+        .retrieve(this.nameContains, this.itemIdEquals != 0 ? this.itemIdEquals : '', paginationQuery)
         .then(
           res => {
             this.equipment = res.data;

@@ -1,22 +1,31 @@
 package com.wcc.hanems.customized.controller;
 
+import com.wcc.hanems.customized.dto.LendReturnRecordCtCriteria;
+import com.wcc.hanems.customized.service.LendReturnRecordCtQueryService;
 import com.wcc.hanems.customized.service.LendReturnRecordCtService;
 import com.wcc.hanems.repository.LendReturnRecordRepository;
 import com.wcc.hanems.service.LendReturnRecordQueryService;
 import com.wcc.hanems.service.LendReturnRecordService;
+import com.wcc.hanems.service.criteria.LendReturnRecordCriteria;
 import com.wcc.hanems.service.dto.LendReturnRecordDTO;
 import com.wcc.hanems.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Instant;
+import java.util.List;
 import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tech.jhipster.web.util.HeaderUtil;
+import tech.jhipster.web.util.PaginationUtil;
 
 /**
  * REST controller for managing {@link com.wcc.hanems.domain.LendReturnRecord}.
@@ -37,6 +46,9 @@ public class LendReturnRecordCtController {
     private final LendReturnRecordRepository lendReturnRecordRepository;
 
     private final LendReturnRecordQueryService lendReturnRecordQueryService;
+
+    @Autowired
+    private LendReturnRecordCtQueryService lendReturnRecordCtQueryService;
 
     @Autowired
     private LendReturnRecordCtService lendReturnRecordCtService;
@@ -84,5 +96,16 @@ public class LendReturnRecordCtController {
             .created(new URI("/api/lend-return-records/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+    @GetMapping("/wcc105GetAll")
+    public ResponseEntity<List<LendReturnRecordDTO>> getAllLendReturnRecords(
+        LendReturnRecordCtCriteria criteria,
+        @org.springdoc.api.annotations.ParameterObject Pageable pageable
+    ) {
+        log.debug("REST request to get LendReturnRecords by criteria: {}", criteria);
+        Page<LendReturnRecordDTO> page = lendReturnRecordCtQueryService.findByCriteria(criteria, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 }

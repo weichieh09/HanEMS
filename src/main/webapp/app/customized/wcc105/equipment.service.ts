@@ -20,10 +20,18 @@ export default class EquipmentService {
     });
   }
 
-  public retrieve(paginationQuery?: any): Promise<any> {
+  public retrieve(nameContains, itemIdEquals, paginationQuery?: any): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
-        .get(baseApiUrl + `?${buildPaginationQueryOpts(paginationQuery)}`)
+        .get(
+          baseApiUrl +
+            '?name.contains=' +
+            nameContains +
+            '&itemId.equals=' +
+            itemIdEquals +
+            '&' +
+            `${buildPaginationQueryOpts(paginationQuery)}`
+        )
         .then(res => {
           resolve(res);
         })

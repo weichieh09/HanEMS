@@ -24,6 +24,11 @@ export default class LendReturnRecord extends mixins(JhiDataUtils) {
   public reverse = false;
   public totalItems = 0;
 
+  public pIdno = '';
+  public pName = '';
+  public eName = '';
+  public rDate = 'all';
+
   public lendReturnRecords: ILendReturnRecord[] = [];
 
   public isFetching = false;
@@ -45,7 +50,7 @@ export default class LendReturnRecord extends mixins(JhiDataUtils) {
       sort: this.sort(),
     };
     this.lendReturnRecordService()
-      .retrieve(paginationQuery)
+      .retrieve(this.pIdno, this.pName, this.eName, this.rDate == 'all' ? '' : this.rDate, paginationQuery)
       .then(
         res => {
           this.lendReturnRecords = res.data;
