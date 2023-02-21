@@ -31,10 +31,10 @@
             </option>
           </select>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="4">
           <input type="text" class="form-control" v-model="nameContains" placeholder="名稱" />
         </b-col>
-        <b-col cols="2">
+        <b-col cols="4">
           <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
             <font-awesome-icon icon="search" :spin="isFetching"></font-awesome-icon>
             <span>搜尋</span>
@@ -50,6 +50,15 @@
               <span>新增</span>
             </button>
           </router-link>
+          <xlsx-workbook>
+            <xlsx-sheet :collection="sheet.data" v-for="sheet in sheets" :key="sheet.name" :sheet-name="sheet.name" />
+            <xlsx-download>
+              <button class="btn btn-warning mr-2">
+                <font-awesome-icon icon="search"></font-awesome-icon>
+                <span>下載</span>
+              </button>
+            </xlsx-download>
+          </xlsx-workbook>
         </b-col>
       </b-row>
     </b-container>

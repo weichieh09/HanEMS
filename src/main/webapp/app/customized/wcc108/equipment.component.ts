@@ -10,8 +10,15 @@ import EquipmentService from './equipment.service';
 import ItemService from './item.service';
 import AlertService from '@/shared/alert/alert.service';
 
+import { XlsxWorkbook, XlsxSheet, XlsxDownload } from 'vue-xlsx';
+
 @Component({
   mixins: [Vue2Filters.mixin],
+  components: {
+    XlsxWorkbook,
+    XlsxSheet,
+    XlsxDownload,
+  },
 })
 export default class Equipment extends mixins(JhiDataUtils) {
   @Provide('equipmentService') private equipmentService = () => new EquipmentService();
@@ -29,6 +36,8 @@ export default class Equipment extends mixins(JhiDataUtils) {
 
   public nameContains = '';
   public itemIdEquals = 0;
+
+  public sheets = null;
 
   public equipment: IEquipment[] = [];
   public items: IItem[] = [];
@@ -60,6 +69,7 @@ export default class Equipment extends mixins(JhiDataUtils) {
           this.totalItems = Number(res.headers['x-total-count']);
           this.queryCount = this.totalItems;
           this.isFetching = false;
+          this.sheets = [{ name: 'SheetOne', data: res.data }];
         },
         err => {
           this.isFetching = false;
