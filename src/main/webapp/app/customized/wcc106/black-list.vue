@@ -2,7 +2,7 @@
   <div>
     <h2 id="page-heading" data-cy="BlackListHeading">
       <span id="black-list-heading">[管理] 黑名單</span>
-      <div class="d-flex justify-content-end">
+      <!-- <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span>更新</span>
@@ -18,7 +18,7 @@
             <span>新增</span>
           </button>
         </router-link>
-      </div>
+      </div> -->
     </h2>
     <br />
     <b-container fluid>
@@ -26,7 +26,7 @@
         <b-col cols="4">
           <input type="text" class="form-control" placeholder="學號" v-model="pIdno" />
         </b-col>
-        <b-col cols="4">
+        <b-col cols="6">
           <input type="text" class="form-control" placeholder="姓名" v-model="pName" />
         </b-col>
         <b-col cols="2">
@@ -34,12 +34,30 @@
             <font-awesome-icon icon="search" :spin="isFetching"></font-awesome-icon>
             <span>搜尋</span>
           </button>
+          <router-link :to="{ name: 'Wcc106Create' }" custom v-slot="{ navigate }">
+            <button
+              @click="navigate"
+              id="jh-create-entity"
+              data-cy="entityCreateButton"
+              class="btn btn-primary jh-create-entity create-black-list"
+            >
+              <font-awesome-icon icon="plus"></font-awesome-icon>
+              <span>新增</span>
+            </button>
+          </router-link>
         </b-col>
-        <b-col cols="2">
-          <small class="form-text text-danger">停用規則:</small>
-          <small class="form-text text-danger">黑單2次 = 停用1個月</small>
-          <small class="form-text text-danger">黑單3次 = 停用6個月</small>
-          <small class="form-text text-danger">黑單4次 = 永久停用</small>
+      </b-row>
+      <br />
+      <b-row>
+        <b-col>
+          <div class="alert alert-info">
+            <span
+              ><small class="form-text text-danger">停用規則:</small>
+              <small class="form-text text-danger">黑單2次 = 停用1個月</small>
+              <small class="form-text text-danger">黑單3次 = 停用6個月</small>
+              <small class="form-text text-danger">黑單4次 = 永久停用</small></span
+            >
+          </div>
         </b-col>
       </b-row>
     </b-container>

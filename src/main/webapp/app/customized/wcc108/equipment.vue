@@ -2,7 +2,7 @@
   <div>
     <h2 id="page-heading" data-cy="EquipmentHeading">
       <span id="equipment-heading">[管理] 設備</span>
-      <div class="d-flex justify-content-end">
+      <!-- <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span>更新</span>
@@ -18,7 +18,7 @@
             <span>新增</span>
           </button>
         </router-link>
-      </div>
+      </div> -->
     </h2>
     <br />
     <b-container fluid>
@@ -39,6 +39,17 @@
             <font-awesome-icon icon="search" :spin="isFetching"></font-awesome-icon>
             <span>搜尋</span>
           </button>
+          <router-link :to="{ name: 'Wcc108Create' }" custom v-slot="{ navigate }">
+            <button
+              @click="navigate"
+              id="jh-create-entity"
+              data-cy="entityCreateButton"
+              class="btn btn-primary jh-create-entity create-equipment"
+            >
+              <font-awesome-icon icon="plus"></font-awesome-icon>
+              <span>新增</span>
+            </button>
+          </router-link>
         </b-col>
       </b-row>
     </b-container>

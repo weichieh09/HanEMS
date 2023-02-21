@@ -2,9 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <div v-if="lendReturnRecord">
-        <h2 class="jh-entity-heading" data-cy="lendReturnRecordDetailsHeading">
-          <span v-text="$t('hanEmsApp.lendReturnRecord.detail.title')">[檢視] 借出/歸還 </span> {{ lendReturnRecord.id }}
-        </h2>
+        <h2 class="jh-entity-heading" data-cy="lendReturnRecordDetailsHeading"><span>[檢視] 借出/歸還 </span> {{ lendReturnRecord.id }}</h2>
         <dl class="row jh-entity-details">
           <dt>
             <span>設備名稱</span>

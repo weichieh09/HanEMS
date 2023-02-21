@@ -2,12 +2,12 @@
   <div>
     <h2 id="page-heading" data-cy="LendReturnRecordHeading">
       <span id="lend-return-record-heading">[紀錄] 借出/歸還</span>
-      <div class="d-flex justify-content-end">
+      <!-- <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span>更新</span>
         </button>
-      </div>
+      </div> -->
     </h2>
     <br />
 
