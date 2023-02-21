@@ -20,12 +20,34 @@
         </router-link>
       </div>
     </h2>
-    <div style="float: right">
-      <small class="form-text text-danger">停用規則:</small>
-      <small class="form-text text-danger">黑單2次 = 停用1個月</small>
-      <small class="form-text text-danger">黑單3次 = 停用6個月</small>
-      <small class="form-text text-danger">黑單4次 = 永久停用</small>
-    </div>
+    <br />
+    <b-container fluid>
+      <b-row>
+        <b-col cols="4">
+          <select class="form-control" id="black-list-person" data-cy="person" name="person">
+            <option v-bind:value="0">類別</option>
+            <option v-bind:value="itemOption.id" v-for="itemOption in items" :key="itemOption.id">
+              {{ itemOption.name }}
+            </option>
+          </select>
+        </b-col>
+        <b-col cols="4">
+          <input type="text" class="form-control" placeholder="名稱" />
+        </b-col>
+        <b-col cols="2">
+          <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+            <font-awesome-icon icon="search" :spin="isFetching"></font-awesome-icon>
+            <span>搜尋</span>
+          </button>
+        </b-col>
+        <b-col cols="2">
+          <small class="form-text text-danger">停用規則:</small>
+          <small class="form-text text-danger">黑單2次 = 停用1個月</small>
+          <small class="form-text text-danger">黑單3次 = 停用6個月</small>
+          <small class="form-text text-danger">黑單4次 = 永久停用</small>
+        </b-col>
+      </b-row>
+    </b-container>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && blackLists && blackLists.length === 0">
       <span>沒有黑名單資料</span>

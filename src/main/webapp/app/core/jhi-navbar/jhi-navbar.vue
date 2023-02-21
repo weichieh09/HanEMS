@@ -58,15 +58,7 @@
             <span>黑名單</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown
-          style="display: none"
-          right
-          id="entity-menu"
-          v-if="authenticated"
-          active-class="active"
-          class="pointer"
-          data-cy="entity"
-        >
+        <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="database" />
             <span class="no-bold">資料庫</span>

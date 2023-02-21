@@ -21,6 +21,28 @@
       </div>
     </h2>
     <br />
+    <b-container fluid>
+      <b-row>
+        <b-col cols="4">
+          <select class="form-control" id="black-list-person" data-cy="person" name="person">
+            <option v-bind:value="0">類別</option>
+            <option v-bind:value="itemOption.id" v-for="itemOption in items" :key="itemOption.id">
+              {{ itemOption.name }}
+            </option>
+          </select>
+        </b-col>
+        <b-col cols="6">
+          <input type="text" class="form-control" placeholder="名稱" />
+        </b-col>
+        <b-col cols="2">
+          <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+            <font-awesome-icon icon="search" :spin="isFetching"></font-awesome-icon>
+            <span>搜尋</span>
+          </button>
+        </b-col>
+      </b-row>
+    </b-container>
+    <br />
     <div class="alert alert-warning" v-if="!isFetching && equipment && equipment.length === 0">
       <span>沒有設備資料</span>
     </div>
@@ -40,10 +62,10 @@
               <span>名稱</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'name'"></jhi-sort-indicator>
             </th>
-            <!-- <th scope="row" v-on:click="changeOrder('description')">
-              <span v-text="$t('hanEmsApp.equipment.description')">Description</span>
+            <th scope="row" v-on:click="changeOrder('description')">
+              <span>描述</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
-            </th> -->
+            </th>
             <!-- <th scope="row" v-on:click="changeOrder('createDate')">
               <span v-text="$t('hanEmsApp.equipment.createDate')">Create Date</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
@@ -56,10 +78,11 @@
               <span>類別</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'item.id'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('status.id')">
+            <!-- <th scope="row" v-on:click="changeOrder('status.id')">
               <span>狀態</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'status.id'"></jhi-sort-indicator>
-            </th>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse"
+                :field-name="'status.id'"></jhi-sort-indicator>
+            </th> -->
             <th scope="row"></th>
           </tr>
         </thead>
@@ -68,7 +91,7 @@
             <td>{{ equipment.id }}</td>
             <td>{{ equipment.idno }}</td>
             <td>{{ equipment.name }}</td>
-            <!-- <td>{{ equipment.description }}</td> -->
+            <td>{{ equipment.description }}</td>
             <!-- <td>{{ equipment.createDate ? $d(Date.parse(equipment.createDate), 'short') : '' }}</td> -->
             <!-- <td>{{ equipment.modifyDate ? $d(Date.parse(equipment.modifyDate), 'short') : '' }}</td> -->
             <td>
@@ -76,7 +99,7 @@
                 {{ equipment.item.name }}
               </div>
             </td>
-            <td>
+            <!-- <td>
               <div v-if="equipment.status.id == 1">
                 <span style="background-color: springgreen; color: green">{{ equipment.status.name }}</span>
               </div>
@@ -86,7 +109,7 @@
               <div v-if="equipment.status.id == 3">
                 <span style="background-color: darkgrey; color: black">{{ equipment.status.name }}</span>
               </div>
-            </td>
+            </td> -->
 
             <td class="text-right">
               <div class="btn-group">
