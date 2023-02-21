@@ -1,11 +1,4 @@
 id;name;description;create_date;modify_date
-1;台灣省 Electronics 街;../fake-data/blob/hipster.txt;2023-02-12T12:21:12;2023-02-13T00:52:36
-2;Automotive;../fake-data/blob/hipster.txt;2023-02-12T11:31:35;2023-02-12T05:51:37
-3;withdrawal pixel Soap;../fake-data/blob/hipster.txt;2023-02-13T01:22:17;2023-02-12T19:39:30
-4;Bedfordshire Synchronised;../fake-data/blob/hipster.txt;2023-02-12T13:23:31;2023-02-12T06:22:18
-5;Forward toolset AI;../fake-data/blob/hipster.txt;2023-02-12T09:01:36;2023-02-12T05:43:20
-6;Handmade Chair;../fake-data/blob/hipster.txt;2023-02-12T21:29:02;2023-02-12T18:41:32
-7;fresh-thinking Pre-emptive;../fake-data/blob/hipster.txt;2023-02-12T07:11:44;2023-02-12T23:26:41
-8;Producer;../fake-data/blob/hipster.txt;2023-02-12T13:41:58;2023-02-12T03:28:36
-9;Bedfordshire Granite;../fake-data/blob/hipster.txt;2023-02-12T21:22:24;2023-02-12T05:10:55
-10;Cambridgeshire;../fake-data/blob/hipster.txt;2023-02-12T07:57:57;2023-02-13T01:39:41
+1;可借出;;2023-02-12T12:21:12;2023-02-13T00:52:36
+2;借出中;;2023-02-12T11:31:35;2023-02-12T05:51:37
+3;不可借出;;2023-02-13T01:22:17;2023-02-12T19:39:30

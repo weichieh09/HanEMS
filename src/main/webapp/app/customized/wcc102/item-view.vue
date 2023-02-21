@@ -11,7 +11,7 @@
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && itemViews && itemViews.length === 0">
-      <span v-text="$t('hanEmsApp.itemView.home.notFound')">沒有總覽資料</span>
+      <span>沒有總覽資料</span>
     </div>
     <div class="table-responsive" v-if="itemViews && itemViews.length > 0">
       <table class="table table-striped" aria-describedby="itemViews">
