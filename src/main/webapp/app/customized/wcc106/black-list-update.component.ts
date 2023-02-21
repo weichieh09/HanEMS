@@ -23,6 +23,10 @@ const validations: any = {
     },
     createDate: {},
     modifyDate: {},
+    personIdno: {
+      required,
+    },
+    personName: {},
   },
 };
 

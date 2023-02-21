@@ -7,6 +7,8 @@ export interface IBlackList {
   createDate?: Date | null;
   modifyDate?: Date | null;
   person?: IPerson | null;
+  personIdno?: string | null;
+  personName?: string | null;
 }
 
 export class BlackList implements IBlackList {
@@ -16,6 +18,8 @@ export class BlackList implements IBlackList {
     public blackDate?: Date,
     public createDate?: Date | null,
     public modifyDate?: Date | null,
-    public person?: IPerson | null
+    public person?: IPerson | null,
+    public personIdno?: string | null,
+    public personName?: string | null
   ) {}
 }

@@ -6,6 +6,7 @@
         <b-col md="12">
           <h4 v-if="authenticated">管理員，你好!</h4>
           <h4 v-else>訪客，你好!</h4>
+          <br />
         </b-col>
         <b-col md="12">
           <h1 align="center">{{ nowDate }}</h1>

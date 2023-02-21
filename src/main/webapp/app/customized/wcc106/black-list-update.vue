@@ -9,7 +9,7 @@
             <label for="id">編號</label>
             <input type="text" class="form-control" id="id" name="id" v-model="blackList.id" readonly />
           </div>
-          <div class="form-group">
+          <div v-if="blackList.id" class="form-group">
             <label class="form-control-label" for="black-list-person">姓名</label>
             <select class="form-control" id="black-list-person" data-cy="person" name="person" v-model="blackList.person">
               <option v-bind:value="null"></option>
@@ -18,9 +18,41 @@
                 v-for="personOption in people"
                 :key="personOption.id"
               >
-                {{ personOption.name }}
+                {{ personOption.idno ? personOption.idno + ', ' : '' }}{{ personOption.name }}
               </option>
             </select>
+          </div>
+          <div v-if="!blackList.id" class="form-group">
+            <label class="form-control-label" for="person-idno">學號</label>
+            <input
+              type="text"
+              class="form-control"
+              name="personIdno"
+              id="person-idno"
+              data-cy="idno"
+              :class="{ valid: !$v.blackList.personIdno.$invalid, invalid: $v.blackList.personIdno.$invalid }"
+              required
+              v-model="$v.blackList.personIdno.$model"
+            />
+            <div v-if="$v.blackList.personIdno.$anyDirty && $v.blackList.personIdno.$invalid">
+              <small class="form-text text-danger" v-if="!$v.blackList.personIdno.required"> 必填 </small>
+            </div>
+          </div>
+          <div v-if="false" class="form-group">
+            <label class="form-control-label" for="person-idno">姓名</label>
+            <input
+              type="text"
+              class="form-control"
+              name="personName"
+              id="person-idno"
+              data-cy="idno"
+              :class="{ valid: !$v.blackList.personName.$invalid, invalid: $v.blackList.personName.$invalid }"
+              required
+              v-model="$v.blackList.personName.$model"
+            />
+            <div v-if="$v.blackList.personName.$anyDirty && $v.blackList.personName.$invalid">
+              <small class="form-text text-danger" v-if="!$v.blackList.personName.required"> 必填 </small>
+            </div>
           </div>
           <div class="form-group">
             <label class="form-control-label" for="black-list-description">描述</label>

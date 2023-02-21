@@ -37,6 +37,8 @@ export default class Equipment extends mixins(JhiDataUtils) {
   public nameContains = '';
   public itemIdEquals = 0;
 
+  public readyToDown = false;
+
   public sheets = null;
 
   public equipment: IEquipment[] = [];
@@ -69,7 +71,6 @@ export default class Equipment extends mixins(JhiDataUtils) {
           this.totalItems = Number(res.headers['x-total-count']);
           this.queryCount = this.totalItems;
           this.isFetching = false;
-          this.sheets = [{ name: 'SheetOne', data: res.data }];
         },
         err => {
           this.isFetching = false;
@@ -146,6 +147,27 @@ export default class Equipment extends mixins(JhiDataUtils) {
       .then(
         res => {
           this.items = res.data;
+        },
+        err => {
+          this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
+  }
+
+  public test(): void {
+    const paginationQuery = {
+      page: 0,
+      size: 99999,
+      sort: this.sort(),
+    };
+    this.equipmentService()
+      .retrieve('', '', paginationQuery)
+      .then(
+        res => {
+          this.readyToDown = true;
+          this.sheets = [{ name: 'SheetOne', data: res.data }];
+          this.isFetching = false;
         },
         err => {
           this.isFetching = false;

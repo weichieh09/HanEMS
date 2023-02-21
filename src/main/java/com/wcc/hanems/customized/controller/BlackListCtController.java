@@ -1,13 +1,17 @@
 package com.wcc.hanems.customized.controller;
 
 import com.wcc.hanems.customized.dto.BlackListCtCriteria;
+import com.wcc.hanems.customized.dto.Wcc106ReqDTO;
 import com.wcc.hanems.customized.service.BlackListCtQueryService;
 import com.wcc.hanems.customized.service.BlackListCtService;
 import com.wcc.hanems.repository.BlackListRepository;
 import com.wcc.hanems.service.BlackListQueryService;
 import com.wcc.hanems.service.BlackListService;
+import com.wcc.hanems.service.PersonQueryService;
 import com.wcc.hanems.service.criteria.BlackListCriteria;
+import com.wcc.hanems.service.criteria.PersonCriteria;
 import com.wcc.hanems.service.dto.BlackListDTO;
+import com.wcc.hanems.service.dto.PersonDTO;
 import com.wcc.hanems.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,6 +30,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import tech.jhipster.service.filter.StringFilter;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -56,6 +61,9 @@ public class BlackListCtController {
     @Autowired
     private BlackListCtQueryService blackListCtQueryService;
 
+    @Autowired
+    private PersonQueryService personQueryService;
+
     public BlackListCtController(
         BlackListService blackListService,
         BlackListRepository blackListRepository,
@@ -74,13 +82,22 @@ public class BlackListCtController {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/wcc106")
-    public ResponseEntity<BlackListDTO> createBlackList(@Valid @RequestBody BlackListDTO blackListDTO) throws URISyntaxException {
-        log.debug("REST request to save BlackList : {}", blackListDTO);
-        if (blackListDTO.getId() != null) {
+    public ResponseEntity<BlackListDTO> createBlackList(@Valid @RequestBody Wcc106ReqDTO reqDTO) throws URISyntaxException {
+        log.debug("REST request to save BlackList : {}", reqDTO);
+        if (reqDTO.getId() != null) {
             throw new BadRequestAlertException("A new blackList cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        BlackListDTO result = blackListService.save(blackListDTO);
-        blackListCtService.isNeedLock(blackListDTO.getPerson().getId());
+        String personIdno = reqDTO.getPersonIdno();
+        PersonCriteria criteria = new PersonCriteria();
+        StringFilter filter = new StringFilter();
+        filter.setEquals(personIdno);
+        criteria.setIdno(filter);
+        List<PersonDTO> byCriteria = personQueryService.findByCriteria(criteria);
+        if (byCriteria.size() != 1) throw new BadRequestAlertException("cannot find personIdno", ENTITY_NAME, "886");
+        PersonDTO personDTO = byCriteria.get(0);
+        reqDTO.setPerson(personDTO);
+        BlackListDTO result = blackListService.save(reqDTO);
+        blackListCtService.isNeedLock(reqDTO.getPerson().getId());
         return ResponseEntity
             .created(new URI("/api/black-lists/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))

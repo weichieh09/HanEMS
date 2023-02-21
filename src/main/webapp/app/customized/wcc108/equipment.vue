@@ -50,12 +50,13 @@
               <span>新增</span>
             </button>
           </router-link>
-          <xlsx-workbook>
+          <xlsx-workbook style="float: right">
             <xlsx-sheet :collection="sheet.data" v-for="sheet in sheets" :key="sheet.name" :sheet-name="sheet.name" />
             <xlsx-download>
-              <button class="btn btn-warning mr-2">
-                <font-awesome-icon icon="search"></font-awesome-icon>
-                <span>下載</span>
+              <button class="btn btn-warning mr-2" @click="test">
+                <font-awesome-icon icon="download"></font-awesome-icon>
+                <span v-if="readyToDown">開始下載</span>
+                <span v-else>準備下載</span>
               </button>
             </xlsx-download>
           </xlsx-workbook>
