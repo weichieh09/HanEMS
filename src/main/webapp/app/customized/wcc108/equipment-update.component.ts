@@ -27,6 +27,12 @@ const validations: any = {
     description: {},
     createDate: {},
     modifyDate: {},
+    item: {
+      required,
+    },
+    status: {
+      required,
+    },
   },
 };
 

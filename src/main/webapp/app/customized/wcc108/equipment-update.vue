@@ -80,7 +80,15 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="equipment-item">類別</label>
-            <select class="form-control" id="equipment-item" data-cy="item" name="item" v-model="equipment.item">
+            <select
+              class="form-control"
+              id="equipment-item"
+              data-cy="item"
+              name="item"
+              v-model="equipment.item"
+              required
+              :class="{ valid: !$v.equipment.item.$invalid, invalid: $v.equipment.item.$invalid }"
+            >
               <option v-bind:value="null"></option>
               <option
                 v-bind:value="equipment.item && itemOption.id === equipment.item.id ? equipment.item : itemOption"
@@ -93,7 +101,15 @@
           </div>
           <div class="form-group">
             <label class="form-control-label" for="equipment-status">狀態</label>
-            <select class="form-control" id="equipment-status" data-cy="status" name="status" v-model="equipment.status">
+            <select
+              class="form-control"
+              id="equipment-status"
+              data-cy="status"
+              name="status"
+              v-model="equipment.status"
+              required
+              :class="{ valid: !$v.equipment.status.$invalid, invalid: $v.equipment.status.$invalid }"
+            >
               <option v-bind:value="null"></option>
               <option
                 v-bind:value="equipment.status && statusOption.id === equipment.status.id ? equipment.status : statusOption"
