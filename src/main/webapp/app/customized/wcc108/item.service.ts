@@ -2,13 +2,13 @@ import axios from 'axios';
 
 import buildPaginationQueryOpts from '@/shared/sort/sorts';
 
-import { IBlackList } from '@/shared/model/black-list.model';
+import { IItem } from '@/shared/model/item.model';
 
-const baseApiUrl = 'api/wcc106';
+const baseApiUrl = 'api/items';
 
-export default class BlackListService {
-  public find(id: number): Promise<IBlackList> {
-    return new Promise<IBlackList>((resolve, reject) => {
+export default class ItemService {
+  public find(id: number): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .get(`${baseApiUrl}/${id}`)
         .then(res => {
@@ -20,12 +20,10 @@ export default class BlackListService {
     });
   }
 
-  public retrieve(pIdno, pName, paginationQuery?: any): Promise<any> {
+  public retrieve(paginationQuery?: any): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
-        .get(
-          baseApiUrl + '?personIdno.contains=' + pIdno + '&personName.contains=' + pName + `&${buildPaginationQueryOpts(paginationQuery)}`
-        )
+        .get(baseApiUrl + `?${buildPaginationQueryOpts(paginationQuery)}`)
         .then(res => {
           resolve(res);
         })
@@ -48,8 +46,8 @@ export default class BlackListService {
     });
   }
 
-  public create(entity: IBlackList): Promise<IBlackList> {
-    return new Promise<IBlackList>((resolve, reject) => {
+  public create(entity: IItem): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .post(`${baseApiUrl}`, entity)
         .then(res => {
@@ -61,8 +59,8 @@ export default class BlackListService {
     });
   }
 
-  public update(entity: IBlackList): Promise<IBlackList> {
-    return new Promise<IBlackList>((resolve, reject) => {
+  public update(entity: IItem): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .put(`${baseApiUrl}/${entity.id}`, entity)
         .then(res => {
@@ -74,8 +72,8 @@ export default class BlackListService {
     });
   }
 
-  public partialUpdate(entity: IBlackList): Promise<IBlackList> {
-    return new Promise<IBlackList>((resolve, reject) => {
+  public partialUpdate(entity: IItem): Promise<IItem> {
+    return new Promise<IItem>((resolve, reject) => {
       axios
         .patch(`${baseApiUrl}/${entity.id}`, entity)
         .then(res => {

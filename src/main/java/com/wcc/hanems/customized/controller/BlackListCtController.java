@@ -1,5 +1,7 @@
 package com.wcc.hanems.customized.controller;
 
+import com.wcc.hanems.customized.dto.BlackListCtCriteria;
+import com.wcc.hanems.customized.service.BlackListCtQueryService;
 import com.wcc.hanems.customized.service.BlackListCtService;
 import com.wcc.hanems.repository.BlackListRepository;
 import com.wcc.hanems.service.BlackListQueryService;
@@ -50,6 +52,9 @@ public class BlackListCtController {
 
     @Autowired
     private BlackListCtService blackListCtService;
+
+    @Autowired
+    private BlackListCtQueryService blackListCtQueryService;
 
     public BlackListCtController(
         BlackListService blackListService,
@@ -161,11 +166,11 @@ public class BlackListCtController {
      */
     @GetMapping("/wcc106")
     public ResponseEntity<List<BlackListDTO>> getAllBlackLists(
-        BlackListCriteria criteria,
+        BlackListCtCriteria criteria,
         @org.springdoc.api.annotations.ParameterObject Pageable pageable
     ) {
         log.debug("REST request to get BlackLists by criteria: {}", criteria);
-        Page<BlackListDTO> page = blackListQueryService.findByCriteria(criteria, pageable);
+        Page<BlackListDTO> page = blackListCtQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

@@ -24,15 +24,10 @@
     <b-container fluid>
       <b-row>
         <b-col cols="4">
-          <select class="form-control" id="black-list-person" data-cy="person" name="person">
-            <option v-bind:value="0">類別</option>
-            <option v-bind:value="itemOption.id" v-for="itemOption in items" :key="itemOption.id">
-              {{ itemOption.name }}
-            </option>
-          </select>
+          <input type="text" class="form-control" placeholder="學號" v-model="pIdno" />
         </b-col>
         <b-col cols="4">
-          <input type="text" class="form-control" placeholder="名稱" />
+          <input type="text" class="form-control" placeholder="姓名" v-model="pName" />
         </b-col>
         <b-col cols="2">
           <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
@@ -60,10 +55,6 @@
               <span>編號</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>
             </th>
-            <!-- <th scope="row" v-on:click="changeOrder('description')">
-                <span>描述</span>
-                <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
-              </th> -->
             <!-- <th scope="row" v-on:click="changeOrder('createDate')">
                 <span v-text="$t('hanEmsApp.blackList.createDate')">Create Date</span>
                 <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'createDate'"></jhi-sort-indicator>
@@ -76,6 +67,10 @@
                 <span v-text="$t('hanEmsApp.blackList.person')">Person</span>
                 <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.id'"></jhi-sort-indicator>
               </th> -->
+            <th scope="row" v-on:click="changeOrder('person.idno')">
+              <span>學號</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.idno'"></jhi-sort-indicator>
+            </th>
             <th scope="row" v-on:click="changeOrder('person.id')">
               <span>姓名</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'person.id'"></jhi-sort-indicator>
@@ -84,13 +79,16 @@
               <span>違規日期</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'blackDate'"></jhi-sort-indicator>
             </th>
+            <th scope="row" v-on:click="changeOrder('description')">
+              <span>描述</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'description'"></jhi-sort-indicator>
+            </th>
             <th scope="row"></th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="blackList in blackLists" :key="blackList.id" data-cy="entityTable">
             <td>{{ blackList.id }}</td>
-            <!-- <td>{{ blackList.description }}</td> -->
             <!-- <td>{{ blackList.createDate ? $d(Date.parse(blackList.createDate), 'short') : '' }}</td>
               <td>{{ blackList.modifyDate ? $d(Date.parse(blackList.modifyDate), 'short') : '' }}</td>
               <td>
@@ -98,8 +96,10 @@
                   <router-link :to="{ name: 'PersonView', params: { personId: blackList.person.id } }">{{ blackList.person.id }}</router-link>
                 </div>
               </td> -->
+            <td>{{ blackList.person.idno }}</td>
             <td>{{ blackList.person.name }}</td>
             <td>{{ blackList.blackDate ? $d(Date.parse(blackList.blackDate), 'short') : '' }}</td>
+            <td>{{ blackList.description }}</td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'Wcc106View', params: { blackListId: blackList.id } }" custom v-slot="{ navigate }">

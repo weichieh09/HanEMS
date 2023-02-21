@@ -24,6 +24,9 @@ export default class BlackList extends mixins(JhiDataUtils) {
   public reverse = false;
   public totalItems = 0;
 
+  public pIdno = '';
+  public pName = '';
+
   public blackLists: IBlackList[] = [];
 
   public isFetching = false;
@@ -45,7 +48,7 @@ export default class BlackList extends mixins(JhiDataUtils) {
       sort: this.sort(),
     };
     this.blackListService()
-      .retrieve(paginationQuery)
+      .retrieve(this.pIdno, this.pName, paginationQuery)
       .then(
         res => {
           this.blackLists = res.data;

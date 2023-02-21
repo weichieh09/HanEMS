@@ -2,10 +2,12 @@ import { mixins } from 'vue-class-component';
 import { Component, Vue, Inject, Provide } from 'vue-property-decorator';
 import Vue2Filters from 'vue2-filters';
 import { IEquipment } from '@/shared/model/equipment.model';
+import { IItem, Item } from '@/shared/model/item.model';
 
 import JhiDataUtils from '@/shared/data/data-utils.service';
 
 import EquipmentService from './equipment.service';
+import ItemService from './item.service';
 import AlertService from '@/shared/alert/alert.service';
 
 @Component({
@@ -13,6 +15,7 @@ import AlertService from '@/shared/alert/alert.service';
 })
 export default class Equipment extends mixins(JhiDataUtils) {
   @Provide('equipmentService') private equipmentService = () => new EquipmentService();
+  @Provide('ItemService') private itemService = () => new ItemService();
   @Inject('alertService') private alertService: () => AlertService;
 
   private removeId: number = null;
@@ -24,12 +27,17 @@ export default class Equipment extends mixins(JhiDataUtils) {
   public reverse = false;
   public totalItems = 0;
 
+  public nameContains = '';
+  public itemIdEquals = 0;
+
   public equipment: IEquipment[] = [];
+  public items: IItem[] = [];
 
   public isFetching = false;
 
   public mounted(): void {
     this.retrieveAllEquipments();
+    this.retrieveAllItems();
   }
 
   public clear(): void {
@@ -45,7 +53,7 @@ export default class Equipment extends mixins(JhiDataUtils) {
       sort: this.sort(),
     };
     this.equipmentService()
-      .retrieve(paginationQuery)
+      .retrieve(this.nameContains, this.itemIdEquals != 0 ? this.itemIdEquals : '', paginationQuery)
       .then(
         res => {
           this.equipment = res.data;
@@ -119,5 +127,20 @@ export default class Equipment extends mixins(JhiDataUtils) {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public retrieveAllItems(): void {
+    this.isFetching = true;
+    this.itemService()
+      .retrieve()
+      .then(
+        res => {
+          this.items = res.data;
+        },
+        err => {
+          this.isFetching = false;
+          this.alertService().showHttpError(this, err.response);
+        }
+      );
   }
 }

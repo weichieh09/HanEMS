@@ -24,7 +24,7 @@
     <b-container fluid>
       <b-row>
         <b-col cols="4">
-          <select class="form-control" id="black-list-person" data-cy="person" name="person">
+          <select class="form-control" id="black-list-person" data-cy="person" name="person" v-model="itemIdEquals">
             <option v-bind:value="0">類別</option>
             <option v-bind:value="itemOption.id" v-for="itemOption in items" :key="itemOption.id">
               {{ itemOption.name }}
@@ -32,7 +32,7 @@
           </select>
         </b-col>
         <b-col cols="6">
-          <input type="text" class="form-control" placeholder="名稱" />
+          <input type="text" class="form-control" v-model="nameContains" placeholder="名稱" />
         </b-col>
         <b-col cols="2">
           <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
@@ -78,11 +78,10 @@
               <span>類別</span>
               <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'item.id'"></jhi-sort-indicator>
             </th>
-            <!-- <th scope="row" v-on:click="changeOrder('status.id')">
+            <th scope="row" v-on:click="changeOrder('status.id')">
               <span>狀態</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse"
-                :field-name="'status.id'"></jhi-sort-indicator>
-            </th> -->
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'status.id'"></jhi-sort-indicator>
+            </th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -99,7 +98,7 @@
                 {{ equipment.item.name }}
               </div>
             </td>
-            <!-- <td>
+            <td>
               <div v-if="equipment.status.id == 1">
                 <span style="background-color: springgreen; color: green">{{ equipment.status.name }}</span>
               </div>
@@ -109,8 +108,7 @@
               <div v-if="equipment.status.id == 3">
                 <span style="background-color: darkgrey; color: black">{{ equipment.status.name }}</span>
               </div>
-            </td> -->
-
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'Wcc108View', params: { equipmentId: equipment.id } }" custom v-slot="{ navigate }">
