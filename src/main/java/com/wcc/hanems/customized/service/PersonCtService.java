@@ -7,6 +7,7 @@ import com.wcc.hanems.service.dto.PersonDTO;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,20 @@ public class PersonCtService {
     @Autowired
     private PersonQueryService personQueryService;
 
-    public PersonDTO findIsExist(String name) {
+    public PersonDTO findIsExist(String name, String idno) {
         PersonDTO result = null;
         PersonCriteria criteria = new PersonCriteria();
-        StringFilter stringFilter = new StringFilter();
-        stringFilter.setEquals(name);
-        criteria.setName(stringFilter);
+        StringFilter nameSf = new StringFilter();
+        nameSf.setEquals(name);
+        criteria.setName(nameSf);
+
+        if (StringUtils.isBlank(idno)) {
+            idno = "教職人員";
+        }
+        StringFilter idnoSf = new StringFilter();
+        idnoSf.setEquals(idno);
+        criteria.setIdno(idnoSf);
+
         List<PersonDTO> byCriteria = personQueryService.findByCriteria(criteria);
         if (byCriteria.size() > 0) result = byCriteria.get(0);
         return result;

@@ -13,6 +13,7 @@ import java.time.Instant;
 import java.util.Objects;
 import java.util.Optional;
 import javax.validation.Valid;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -60,7 +61,7 @@ public class PersonCtController {
         }
 
         //        查有無存在
-        PersonDTO personDTO = personCtService.findIsExist(reqDTO.getName());
+        PersonDTO personDTO = personCtService.findIsExist(reqDTO.getName(), reqDTO.getIdno());
         if (personDTO != null) {
             Boolean isBlack = personCtService.isBlack(personDTO);
             if (isBlack) {
@@ -70,6 +71,10 @@ public class PersonCtController {
             reqDTO.setCreateDate(personDTO.getCreateDate());
         } else {
             reqDTO.setCreateDate(Instant.now());
+            String idno = reqDTO.getIdno();
+            if (StringUtils.isBlank(idno)) {
+                reqDTO.setIdno("教職人員");
+            }
         }
         reqDTO.setModifyDate(Instant.now());
 
