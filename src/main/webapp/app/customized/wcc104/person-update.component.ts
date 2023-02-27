@@ -17,7 +17,14 @@ const validations: any = {
     name: {
       required,
     },
-    phone: {},
+    phone: {
+      pattern: function (value) {
+        var result = false;
+        if (!value) result = true;
+        else result = /09\d{8}/.test(value);
+        return result;
+      },
+    },
     pending: {},
     createDate: {},
     modifyDate: {},
