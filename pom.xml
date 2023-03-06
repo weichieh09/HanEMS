@@ -7,7 +7,7 @@
 
     <groupId>com.wcc.hanems</groupId>
     <artifactId>han-ems</artifactId>
-    <version>230221</version>
+    <version>230306</version>
     <packaging>jar</packaging>
     <name>Han EMS</name>
     <description>Description for HanEMS</description>

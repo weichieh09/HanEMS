@@ -71,12 +71,13 @@ public class PersonCtController {
             reqDTO.setCreateDate(personDTO.getCreateDate());
         } else {
             reqDTO.setCreateDate(Instant.now());
-            String idno = reqDTO.getIdno();
-            if (StringUtils.isBlank(idno)) {
-                reqDTO.setIdno("教職人員");
-            }
         }
+
         reqDTO.setModifyDate(Instant.now());
+        String idno = reqDTO.getIdno();
+        if (StringUtils.isBlank(idno)) {
+            reqDTO.setIdno("教職人員");
+        }
 
         PersonDTO result = personService.update(reqDTO);
         return ResponseEntity
